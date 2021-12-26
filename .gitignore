@@ -1,0 +1,13 @@
+*~
+*.swp
+.env
+build/
+.ipynb_checkpoints/
+*.mp4
+*.mkv
+*.pyc
+*.pyd
+*.pyo
+*.log
+*.mbtree
+

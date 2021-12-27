@@ -10,4 +10,6 @@ build/
 *.pyo
 *.log
 *.mbtree
+.spyproject/
+*_bak
 

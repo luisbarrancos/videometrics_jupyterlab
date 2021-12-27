@@ -12,9 +12,7 @@ from dotenv import dotenv_values
 
 
 class Media:
-    """
-    Media stream interface for FFMPEG probe, containing related stream data.
-    """
+    """Media interface for FFMPEG probe, containing related stream data."""
 
     def __init__(self):
 
@@ -43,6 +41,8 @@ class Media:
 
     def glob_media(self, containers=None):
         """
+        Glob all media of extension set in containers.
+
         Glob all media of extension set in containers under the directories
         defined by the VIDEO_RESOURCES environment variable or dotenv file.
 
@@ -56,7 +56,8 @@ class Media:
         None.
 
         """
-        _containers = containers if containers is not None else self.containers
+        _containers = containers if \
+            containers is not None else self.containers()
 
         self.__config["media_in"] = [
             os.path.join(self.input_dir(), x)
@@ -71,7 +72,7 @@ class Media:
 
     def input_dir(self):
         """
-        Gets the original source material directory.
+        Get the original source material directory.
 
         Returns
         -------
@@ -83,7 +84,7 @@ class Media:
 
     def output_dir(self):
         """
-        Gets the compressed material directory.
+        Get the compressed material directory.
 
         Returns
         -------
@@ -95,7 +96,7 @@ class Media:
 
     def input_files(self):
         """
-        Returns a list of globbed files from the source material directory.
+        Return a list of globbed files from the source material directory.
 
         Returns
         -------
@@ -109,7 +110,7 @@ class Media:
 
     def output_files(self):
         """
-        Returns a list with output base filenames for compression.
+        Return a list with output base filenames for compression.
 
         Returns
         -------
@@ -121,28 +122,9 @@ class Media:
             return self.__config["media_out"]
         return None
 
-    def add_container(self, containers):
-        """
-        Add a container extension to the set of containers for globbing
-
-        Parameters
-        ----------
-        containers : list
-            List of container types to append to the preset list of mkv, mp4,
-            webm.
-
-        Returns
-        -------
-        None.
-
-        """
-        if isinstance(containers, list):
-            for container in containers:
-                self.__containers.append(container)
-
     def containers(self):
         """
-        Returns the list of containers to glob in the input media directory.
+        Return the list of containers to glob in the input media directory.
 
         Returns
         -------
@@ -154,7 +136,7 @@ class Media:
 
     def config(self):
         """
-        Returns the configuration dictionary for input, compressed material.
+        Return the configuration dictionary for input, compressed material.
 
         Returns
         -------
@@ -167,10 +149,24 @@ class Media:
         """
         return self.__config
 
+    def info(self):
+        """
+        Return the media probe information in a dictionary form.
+
+        Returns
+        -------
+        dict
+            The FFprobe media information for each media file in the list
+            of media files, in dictionary form, with key being the full
+            filename and value being the FFProbe information.
+
+        """
+        return self.probe_all()
+
     @staticmethod
     def probe(video):
         """
-        Returns the video stream info via FFMPEG ffprobe
+        Return the video stream info via FFMPEG ffprobe.
 
         Parameters
         ----------
@@ -185,8 +181,8 @@ class Media:
         """
         probe = ffmpeg.probe(video)
         video_info = next(
-            stream for stream in probe["streams"] if \
-                stream["codec_type"] == "video"
+            stream for stream in probe["streams"] if
+            stream["codec_type"] == "video"
         )
         return video_info
 
@@ -207,7 +203,7 @@ class Media:
 
     def width(self, video):
         """
-        Returns the width of the input video
+        Return the width of the input video.
 
         Parameters
         ----------
@@ -224,7 +220,7 @@ class Media:
 
     def height(self, video):
         """
-        Returns the height of the input video
+        Return the height of the input video.
 
         Parameters
         ----------
@@ -241,7 +237,7 @@ class Media:
 
     def framerate(self, video):
         """
-        Returns the frame rate (not average) of the input video file.
+        Return the frame rate (not average) of the input video file.
 
         Parameters
         ----------
@@ -258,7 +254,7 @@ class Media:
 
     def duration(self, video):
         """
-        Gets the input video duration in hh:mm:ss:msecs format
+        Get the input video duration in hh:mm:ss:msecs format.
 
         Parameters
         ----------
@@ -289,7 +285,7 @@ class Media:
 
     def number_of_seconds(self, video):
         """
-        Gets the duration of the input video in seconds.
+        Get the duration of the input video in seconds.
 
         Parameters
         ----------
@@ -307,7 +303,7 @@ class Media:
 
     def number_of_frames(self, video):
         """
-        Gets the duration of the input video in frames, depends on frame rate.
+        Get the duration of the input video in frames, depends on frame rate.
 
         Parameters
         ----------
@@ -324,19 +320,19 @@ class Media:
             return self.probe(video)["nb_frames"]
 
         frame_rate = self.framerate(video)
-        time_base = int(self.probe(video)["time_base"].splot("/")[1])
+        time_base = int(self.probe(video)["time_base"].split("/")[1])
 
         hours, mins, secs, milliseconds = self.duration(video)
         remaining_frames = int((milliseconds / float(time_base)) * frame_rate)
-        frames = frame_rate * \
-            (3600 * hours + 60 * mins + secs) + remaining_frames
+        frames = frame_rate * (
+            3600 * hours + 60 * mins + secs) + remaining_frames
 
         return frames
 
     @staticmethod
     def video_bitrate(total_bitrate, audio_bitrate=0):
         """
-        Computes the video bitrate according to total and audio bitrate.
+        Compute the video bitrate according to total and audio bitrate.
 
         Parameters
         ----------
@@ -356,7 +352,7 @@ class Media:
     @staticmethod
     def audio_bitrate(video, audio_bitrate=0):
         """
-        Returns the audio bitrate found in the audio stream, or overriden.
+        Return the audio bitrate found in the audio stream, or overriden.
 
         Parameters
         ----------

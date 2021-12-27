@@ -8,10 +8,7 @@ Created on Sun Dec 26 06:08:14 2021
 
 
 class Options:
-    """
-    A class for FFMPEG encoding options
-
-    """
+    """A class for FFMPEG encoding options."""
 
     __verbosity = ["warning", "error", "panic"]
     __vcodecs = ["libx264", "libx265", "libvpx", "libvpx-vp9", "libaom-av1"]
@@ -30,16 +27,24 @@ class Options:
             "loglevel": "error",
             "export_side_data": "venc_params",
         }
-        self.__options = {
+        self.__encode_options = {
+            "crf": 23,
+            "preset": "veryfast",
+            "tune": "film",
+            "memethod": "exa",
+            "pix_fmt": "yuv420p",
+        }
+        self.__encoding_sets = {
             "crf": [18, 23, 27, 36],
             "preset": ["veryfast", "medium", "slower"],
             "tune": ["film", "animation", "grain"],
             "memethod": ["exa", "umh"],
+            "rate_control": ["crf", "cbr"],
         }
 
     def verbosity(self, level):
         """
-        Set the FFMPEG encoding log level
+        Set the FFMPEG encoding log level.
 
         Parameters
         ----------
@@ -56,7 +61,7 @@ class Options:
 
     def entropy_encoding(self, coder):
         """
-        Set the choice of entropy encoding
+        Set the choice of entropy encoding.
 
         Parameters
         ----------
@@ -90,13 +95,13 @@ class Options:
 
     def codec(self, vcodec=None, acodec=None):
         """
-        Sets the video and/or audio codecs fr compression.
+        Set the video and/or audio codecs fr compression.
 
         Parameters
         ----------
         vcodec : str, optional
-            Choice of video codec. It can be one of libx264, libx265, libvpx for
-            VP8, libvpx-vp9 for VP9, aom-av1 for AV1. The default is None.
+            Choice of video codec. It can be one of libx264, libx265, libvpx
+            for VP8, libvpx-vp9 for VP9, aom-av1 for AV1. The default is None.
         acodec : str, optional
             Choice of audio codec. It can be one of copy, mp3, aac, vorbis or
             opus. The default is None.
@@ -114,7 +119,7 @@ class Options:
 
     def chroma_sampling(self, sampling):
         """
-        Set the chroma sampling for the compression
+        Set the chroma sampling for the compression.
 
         Parameters
         ----------
@@ -128,25 +133,11 @@ class Options:
 
         """
         if sampling in self.__chroma_sampling:
-            self.__options["pix_fmt"] = sampling
-
-    def compression_options(self):
-        """
-        Returns the compression options that will be used.
-
-        Returns
-        -------
-        dict
-            Dictionary where keys are the compression methods that
-            will be used, and the values the list containing the values
-            to iterate over when compressing with such method.
-
-        """
-        return self.__options
+            self.__encode_options["pix_fmt"] = sampling
 
     def common_options(self):
         """
-        Returns the common options used for compression
+        Return the common options used for compression.
 
         Returns
         -------
@@ -157,17 +148,41 @@ class Options:
         """
         return self.__common_options
 
-    def insert_options(self, options=None):
+    def encode_options(self):
         """
-        Insert compression options via dictionaries.
+        Return the compression options that will be used.
+
+        Returns
+        -------
+        dict
+            Dictionary where keys are the compression methods that
+            will be used, and the values the list containing the values
+            to iterate over when compressing with such method.
+
+        """
+        return self.__encode_options
+
+    def encoding_sets(self):
+        """
+        Return the test methods dictionary.
+
+        Returns
+        -------
+        dict
+            Dictionary of arrays, i.e, {"crf" : [23, 44]}.
+
+        """
+        return self.__encoding_sets
+
+    def insert_encoding_options(self, options):
+        """
+        Insert encoding options via dictionaries.
 
         Parameters
         ----------
-        options : dict, optional
+        options : dict
             Dictionary containing extra encode specific options in the
-            form key = compression name for ffmpeg, and value is a list
-            containing the values this option will iterate over.
-            The default is None.
+            form key = compression name for ffmpeg, i.e, {"crf" : 23}
 
         Returns
         -------
@@ -176,4 +191,46 @@ class Options:
         """
         if options is not None and isinstance(options, dict):
             for key, val in options:
-                self.__options[key] = val if isinstance(val, list) else list(val)
+                self.__encode_options[key] = val
+
+    def insert_encoding_sets(self, encoding_sets):
+        """
+        Insert encoding sets as dictionary of lists.
+
+        Insert encoding sets iterables as a dictionary of lists, for
+        example, if you want to encode with all the CRF options in a list
+        containing [23, 28, 51] you would pass a dictionary with the following
+        methods={"crf" : [23, 28, 51]}.
+
+        Parameters
+        ----------
+        methods : dict, optional
+            Dictionary of arrays with encoding methods. The default is None.
+
+        Returns
+        -------
+        None.
+
+        """
+        if encoding_sets is not None and isinstance(encoding_sets, dict):
+            for key, val in encoding_sets.items():
+                self.__encoding_sets[key] = val if \
+                    isinstance(val, list) else list(val)
+
+    def rate_control(self, rate_control=None):
+        """
+        Set the rate control method.
+
+        Parameters
+        ----------
+        rate_control : str, optional
+            One of "crf", "capped_crf", "cbr". The default is None.
+
+        Returns
+        -------
+        None.
+
+        """
+        if rate_control is not None and rate_control in \
+                ["crf", "cbr", "capped_crf"]:
+            self.__encode_options["rate_control"] = rate_control

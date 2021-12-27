@@ -12,4 +12,6 @@ build/
 *.mbtree
 .spyproject/
 *_bak
+*.sqlite3
+__pycache__
 

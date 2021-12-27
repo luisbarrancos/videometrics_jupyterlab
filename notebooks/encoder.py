@@ -10,12 +10,6 @@ import copy as cp
 
 import ffmpeg
 
-#
-# encode_video
-# iterate_parameter
-# iterate_methods
-# iterate_videos
-
 
 class Encoder:
     """Automated video encoding class through FFMPEG parameter sets."""
@@ -70,13 +64,20 @@ class Encoder:
 
             for val in values:
                 encode_options[key] = val
-                options = {
-                    **self.__options.common_options(),
-                    **encode_options
-                    }
 
-                # TODO: build final output filename with encoding set arg val
-                self.encode_video(video_in, video_out, options)
+                fname_suffix = "__".join(
+                    map(
+                        lambda x, y: x + "_" + str(y),
+                        encode_options.keys(),
+                        encode_options.values(),
+                    )
+                )
+
+                fname, ext = video_out.split(".")
+                fname = fname + fname_suffix + ext
+                options = {**self.__options.common_options(), **encode_options}
+
+                self.encode_video(video_in, fname, options)
 
     def encode_videos(self):
         """

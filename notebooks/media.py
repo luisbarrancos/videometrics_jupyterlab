@@ -1,0 +1,442 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Dec 26 11:08:01 2021
+
+@author: cgwork
+"""
+import os
+
+import ffmpeg
+from dotenv import dotenv_values
+
+
+class Media:
+    """
+    Media stream interface for FFMPEG probe, containing related stream data.
+    """
+
+    def __init__(self):
+
+        self.__config = {}
+        self.__info = {}
+        self.__config["original_dir"] = os.getenv("VIDEO_RESOURCES", None)
+        self.__config["compressed_dir"] = os.getenv("VIDEO_COMPRESSED", None)
+
+        if not any(self.__config.values()):
+            dotfile = os.path.join(os.path.dirname(os.getcwd()), ".env")
+            if os.path.isfile(dotfile):
+                _tmp = dotenv_values(dotfile)
+                self.__config["original_dir"] = _tmp["VIDEO_RESOURCES"]
+                self.__config["compressed_dir"] = _tmp["VIDEO_COMPRESSED"]
+            else:
+                print(
+                    "No VIDEO_RESOURCES nor VIDEO_COMPRESS environment"
+                    "variables found defining the location of the original"
+                    "uncompressed media, and the compressed media location"
+                    ", neither .env file defining them."
+                )
+
+        self.__containers = ["mp4", "mkv", "webm"]
+        self.__input_dir = self.__config["original_dir"]
+        self.__output_dir = self.__config["compressed_dir"]
+
+    def glob_media(self, containers=None):
+        """
+        Glob all media of extension set in containers under the directories
+        defined by the VIDEO_RESOURCES environment variable or dotenv file.
+
+        Parameters
+        ----------
+        containers : list, optional
+            List of video containers, i.e, mkv, mp4. The default is None.
+
+        Returns
+        -------
+        None.
+
+        """
+        _containers = containers if containers is not None else self.containers
+
+        self.__config["media_in"] = [
+            os.path.join(self.input_dir(), x)
+            for x in os.listdir(self.input_dir())
+            if x.split(".")[1] in _containers
+        ]
+        self.__config["media_out"] = [
+            os.path.join(self.output_dir(), x)
+            for x in os.listdir(self.input_dir())
+            if x.split(".")[1] in _containers
+        ]
+
+    def input_dir(self):
+        """
+        Gets the original source material directory.
+
+        Returns
+        -------
+        str
+            Path to the original source material directory.
+
+        """
+        return self.__input_dir
+
+    def output_dir(self):
+        """
+        Gets the compressed material directory.
+
+        Returns
+        -------
+        str
+            Path to the compressed material directory.
+
+        """
+        return self.__output_dir
+
+    def input_files(self):
+        """
+        Returns a list of globbed files from the source material directory.
+
+        Returns
+        -------
+        list
+            List of media files under the source material directory.
+
+        """
+        if "media_in" in self.__config:
+            return self.__config["media_in"]
+        return None
+
+    def output_files(self):
+        """
+        Returns a list with output base filenames for compression.
+
+        Returns
+        -------
+        list
+            A list with output base destination filenames for compression.
+
+        """
+        if "media_out" in self.__config:
+            return self.__config["media_out"]
+        return None
+
+    def add_container(self, containers):
+        """
+        Add a container extension to the set of containers for globbing
+
+        Parameters
+        ----------
+        containers : list
+            List of container types to append to the preset list of mkv, mp4,
+            webm.
+
+        Returns
+        -------
+        None.
+
+        """
+        if isinstance(containers, list):
+            for container in containers:
+                self.__containers.append(container)
+
+    def containers(self):
+        """
+        Returns the list of containers to glob in the input media directory.
+
+        Returns
+        -------
+        list
+            Containers to glob in the input media directory.
+
+        """
+        return self.__containers
+
+    def config(self):
+        """
+        Returns the configuration dictionary for input, compressed material.
+
+        Returns
+        -------
+        dict
+            The configuration dictionary containing the source/original videos
+            directory, the destination compressed directory, and the globbed
+            list of files found under the source directory as well as the
+            prepared base filename destination files.
+
+        """
+        return self.__config
+
+    @staticmethod
+    def probe(video):
+        """
+        Returns the video stream info via FFMPEG ffprobe
+
+        Parameters
+        ----------
+        video : str
+            Path and filename to query information from.
+
+        Returns
+        -------
+        video_info : dict
+            Dictionary of metadata, tags, found in the media file via FFprobe.
+
+        """
+        probe = ffmpeg.probe(video)
+        video_info = next(
+            stream for stream in probe["streams"] if \
+                stream["codec_type"] == "video"
+        )
+        return video_info
+
+    def probe_all(self):
+        """
+        Video metadata/tags from every globbed media file in the source dir.
+
+        Returns
+        -------
+        dict
+            Dictionary with source material filename as key, and as value the
+            set of metadata/tags found by FFprobe.
+
+        """
+        for video in self.input_files():
+            self.__info[str(video)] = self.probe(video)
+        return self.__info
+
+    def width(self, video):
+        """
+        Returns the width of the input video
+
+        Parameters
+        ----------
+        video : str
+            Input video filename.
+
+        Returns
+        -------
+        int
+            Video width.
+
+        """
+        return int(self.probe(video)["width"])
+
+    def height(self, video):
+        """
+        Returns the height of the input video
+
+        Parameters
+        ----------
+        video : str
+            Input video filename.
+
+        Returns
+        -------
+        int
+            Video height.
+
+        """
+        return int(self.probe(video)["height"])
+
+    def framerate(self, video):
+        """
+        Returns the frame rate (not average) of the input video file.
+
+        Parameters
+        ----------
+        video : str
+            Input video filename.
+
+        Returns
+        -------
+        int
+            Input video framerate, i.e, 25fps for PAL.
+
+        """
+        return int(self.probe(video)["r_frame_rate"].split("/")[0])
+
+    def duration(self, video):
+        """
+        Gets the input video duration in hh:mm:ss:msecs format
+
+        Parameters
+        ----------
+        video : str
+            Input video filename.
+
+        Returns
+        -------
+        list
+            List containing the video duration in hours, minutes, seconds and
+            milliseconds.
+
+        """
+        info = self.probe(video)["tags"]
+
+        if "DURATION" not in info.keys():
+            print(f"No DURATION tag found in {video} probe.")
+            return None
+
+        hours, minutes, seconds = info["DURATION"].split(":")
+        seconds, milliseconds = seconds.split(",")
+        hours, minutes, seconds, milliseconds = map(
+            lambda x: int(x) if len(x) < 3 else round(int(x) * 1e-6),
+            [hours, minutes, seconds, milliseconds],
+        )
+
+        return [hours, minutes, seconds, milliseconds]
+
+    def number_of_seconds(self, video):
+        """
+        Gets the duration of the input video in seconds.
+
+        Parameters
+        ----------
+        video : str
+            Input video filename.
+
+        Returns
+        -------
+        int
+            Total duration of the input video in seconds.
+
+        """
+        hours, minutes, seconds, milliseconds = self.duration(video)
+        return round(hours * 3600 + minutes * 60 + seconds + milliseconds)
+
+    def number_of_frames(self, video):
+        """
+        Gets the duration of the input video in frames, depends on frame rate.
+
+        Parameters
+        ----------
+        video : str
+            Input video filename.
+
+        Returns
+        -------
+        int
+            Total duration of the input video in frames, depends on frame rate.
+
+        """
+        if "nb_frames" in self.probe(video):
+            return self.probe(video)["nb_frames"]
+
+        frame_rate = self.framerate(video)
+        time_base = int(self.probe(video)["time_base"].splot("/")[1])
+
+        hours, mins, secs, milliseconds = self.duration(video)
+        remaining_frames = int((milliseconds / float(time_base)) * frame_rate)
+        frames = frame_rate * \
+            (3600 * hours + 60 * mins + secs) + remaining_frames
+
+        return frames
+
+    @staticmethod
+    def video_bitrate(total_bitrate, audio_bitrate=0):
+        """
+        Computes the video bitrate according to total and audio bitrate.
+
+        Parameters
+        ----------
+        total_bitrate : int
+            Total available bitrate for the AV stream.
+        audio_bitrate : int, optional
+            Available bitrate for the audio stream. The default is 0.
+
+        Returns
+        -------
+        int
+            Available bitrate for the video stream.
+
+        """
+        return total_bitrate - audio_bitrate
+
+    @staticmethod
+    def audio_bitrate(video, audio_bitrate=0):
+        """
+        Returns the audio bitrate found in the audio stream, or overriden.
+
+        Parameters
+        ----------
+        video : str
+            Input video filename.
+        audio_bitrate : int, optional
+            Available bitrate for the audio stream. The default is 0.
+
+        Returns
+        -------
+        int
+            Audio bitrate from existing AV stream, or manually allocated.
+
+        """
+        if audio_bitrate != 0:
+            return audio_bitrate
+
+        if ffmpeg.probe(video, select_streams="a")["streams"]:
+            bitrate = float(
+                next(
+                    (
+                        s
+                        for s in ffmpeg.probe(video)["streams"]
+                        if s["codec_type"] == "audio"
+                    ),
+                    None,
+                )["bit_rate"]
+            )
+            return bitrate
+        return 0
+
+    @staticmethod
+    def total_bitrate(target_size_mib, duration_secs):
+        """
+        Total bitrate to use for given size in MiB and duration in seconds.
+
+        Parameters
+        ----------
+        target_size_mib : int
+            Target file size in MiB, i.e, 1MiB = 1024KiB.
+        duration_secs : int
+            Duration of the media stream.
+
+        Returns
+        -------
+        int
+            Total bitrate for a given target size and duration.
+
+        """
+        # convert to KiB, then to Kbit/s
+        return int(target_size_mib * 1024 * 8 / float(duration_secs))
+
+    def bitrates_for_size(self, video, target_size_mib):
+        """
+        Total, audio, video bitrates for given media and desired file size.
+
+        Parameters
+        ----------
+        video : str
+            Input media file.
+        target_size_mib : int
+            Desired media file size in MiB.
+
+        Returns
+        -------
+        dict
+            Dictionary containing the keys "total_bitrate", "video_bitrate"
+            and "audio_bitrate" with their computed values in function of
+            the media stream duration and desired final file size.
+
+        """
+        duration_secs = self.number_of_seconds(video)
+        total_bitrate = self.total_bitrate(target_size_mib, duration_secs)
+
+        audio_bitrate = self.audio_bitrate(video)
+        video_bitrate = self.video_bitrate(
+            total_bitrate, audio_bitrate=audio_bitrate)
+
+        return {
+            "total_bitrate": total_bitrate,
+            "video_bitrate": video_bitrate,
+            "audio_bitrate": audio_bitrate,
+        }

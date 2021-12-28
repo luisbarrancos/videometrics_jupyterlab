@@ -82,7 +82,7 @@ class Encoder:
         return self.__options
 
     @staticmethod
-    def encode_video(video_in, video_out, options):
+    def encode_video(video_in, video_out, options, debug=False):
         """
         Encode video with the FFMPEG options passed.
 
@@ -94,15 +94,23 @@ class Encoder:
             Output video filename.
         options : dict
             FFMPEG options in key:pair form.
+        debug : bool
+            When true, skips encoding and dump the I/O media paths instead.
 
         Returns
         -------
         None.
 
         """
-        # print(video_in, video_out, options)
-        vin = ffmpeg.input(video_in)
-        ffmpeg.output(vin, video_out, **options).overwrite_output().run()
+        if debug is True:
+            print(video_in, video_out, options)
+        else:
+            vin = ffmpeg.input(video_in)
+            ffmpeg.output(
+                vin,
+                video_out,
+                **options
+                ).overwrite_output().run()
 
     def encoding(self, video_in, video_out):
         """

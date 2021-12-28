@@ -149,9 +149,21 @@ class Media:
         """
         return self.__config
 
-    def info(self):
+    def info(self, media=None):
         """
         Return the media probe information in a dictionary form.
+
+        When invoked without arguments it returns a dictionary containing as
+        keys the filenames from the media list, and as values, dictionaries
+        with the ffprobe media info.
+        When called with a filename as argument, it returns that media file
+        ffprobe media information instead.
+
+
+        Parameters
+        ----------
+        media : str, optional
+            A individual media file to get the info from. The default is None.
 
         Returns
         -------
@@ -159,8 +171,15 @@ class Media:
             The FFprobe media information for each media file in the list
             of media files, in dictionary form, with key being the full
             filename and value being the FFProbe information.
+            When called with a filename argument, it returns instead a single
+            media file ffprobe information.
 
         """
+        media_data = self.probe_all()
+        if media is not None and \
+                isinstance(media, str) and media in media_data:
+            return media_data[media]
+
         return self.probe_all()
 
     @staticmethod

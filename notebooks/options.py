@@ -31,7 +31,7 @@ class Options:
             "crf": 23,
             "preset": "veryfast",
             "tune": "film",
-            "motion-est": "exa",
+            "motion-est": "esa",
             "aq-mode": -1,
             "weightp": -1,
             "pix_fmt": "yuv420p",
@@ -40,10 +40,10 @@ class Options:
             "crf": [18, 23, 27, 36],
             "preset": ["veryfast", "medium", "slower"],
             "tune": ["film", "animation", "grain"],
-            "motion-est": ["exa", "umh"],
+            "motion-est": ["esa", "umh"],
             "aq-mode": [0, 1, 2, 3],
             "weightp": [0, 1, 2],
-            "pix_fmt": ["yuv420p", "yuv422p", "yuv444p"],
+            "pix_fmt": self.__chroma_sampling,
         }
         self.__rate_control = {
             # All rates in kbit/s

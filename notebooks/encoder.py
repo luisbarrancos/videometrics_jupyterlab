@@ -110,7 +110,7 @@ class Encoder:
             ffmpeg.output(
                 vin,
                 video_out,
-                **options
+                **options,
                 ).overwrite_output().run()
 
     def encoding(self, video_in, video_out):

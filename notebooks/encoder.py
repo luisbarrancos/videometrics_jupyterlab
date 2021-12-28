@@ -10,6 +10,9 @@ import copy as cp
 
 import ffmpeg
 
+# import media as md
+# import options as op
+
 
 class Encoder:
     """Automated video encoding class through FFMPEG parameter sets."""
@@ -19,6 +22,64 @@ class Encoder:
         self.__options = options  # op.Options
         # op.Options has
         # common_options | encode_options | encoding_sets (iters)
+
+    def set_media(self, media):
+        """
+        Set the input media and output media object.
+
+        Parameters
+        ----------
+        media : class
+            Media object instance, containing the input, output media list.
+
+        Returns
+        -------
+        None.
+
+        """
+        if media is not None and isinstance(media, media.Media):
+            self.__media = media
+
+    def set_options(self, options):
+        """
+        Set the options for encoding.
+
+        Parameters
+        ----------
+        options : class
+            Options object instance, containing the common, encoding, sets.
+
+        Returns
+        -------
+        None.
+
+        """
+        if options is not None and isinstance(options, options.Options):
+            self.__options = options
+
+    def media(self):
+        """
+        Getter for media object instance.
+
+        Returns
+        -------
+        Media
+            Media object instance with media input, output lists.
+
+        """
+        return self.__media
+
+    def options(self):
+        """
+        Geetter for options object instance.
+
+        Returns
+        -------
+        Options
+            Options object instance with options input, output lists.
+
+        """
+        return self.__options
 
     @staticmethod
     def encode_video(video_in, video_out, options):
@@ -39,6 +100,7 @@ class Encoder:
         None.
 
         """
+        # print(video_in, video_out, options)
         vin = ffmpeg.input(video_in)
         ffmpeg.output(vin, video_out, **options).overwrite_output().run()
 
@@ -74,14 +136,18 @@ class Encoder:
                 )
 
                 fname, ext = video_out.split(".")
-                fname = fname + fname_suffix + ext
-                options = {**self.__options.common_options(), **encode_options}
+                fname = f"{fname}_{fname_suffix}.{ext}"
+                options = {
+                    **self.__options.common_options(),
+                    **encode_options
+                    }
 
+                # print(f"input {video_in}, output = {fname}")
                 self.encode_video(video_in, fname, options)
 
     def encode_videos(self):
         """
-        Encode all the videos in the input media list iterating over options.
+        Encode all the input list videos with the options set.
 
         Returns
         -------

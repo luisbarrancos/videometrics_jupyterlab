@@ -325,7 +325,8 @@ class Media:
         hours, mins, secs, milliseconds = self.duration(video)
         remaining_frames = int((milliseconds / float(time_base)) * frame_rate)
         frames = frame_rate * (
-            3600 * hours + 60 * mins + secs) + remaining_frames
+            3600 * hours + 60 * mins + secs
+            ) + remaining_frames
 
         return frames
 
@@ -429,7 +430,9 @@ class Media:
 
         audio_bitrate = self.audio_bitrate(video)
         video_bitrate = self.video_bitrate(
-            total_bitrate, audio_bitrate=audio_bitrate)
+            total_bitrate,
+            audio_bitrate=audio_bitrate
+            )
 
         return {
             "total_bitrate": total_bitrate,

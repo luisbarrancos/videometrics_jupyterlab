@@ -103,7 +103,8 @@ class Encoder:
 
         """
         if debug is True:
-            print(video_in, video_out, options)
+            print(f"in = {video_in}, out = {video_out}, opt = {options}")
+
         else:
             vin = ffmpeg.input(video_in)
             ffmpeg.output(

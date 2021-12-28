@@ -31,15 +31,54 @@ class Options:
             "crf": 23,
             "preset": "veryfast",
             "tune": "film",
-            "memethod": "exa",
+            "motion-est": "exa",
+            "aq-mode": -1,
+            "weightp": -1,
             "pix_fmt": "yuv420p",
         }
         self.__encoding_sets = {
             "crf": [18, 23, 27, 36],
             "preset": ["veryfast", "medium", "slower"],
             "tune": ["film", "animation", "grain"],
-            "memethod": ["exa", "umh"],
-            "rate_control": ["crf", "cbr"],
+            "motion-est": ["exa", "umh"],
+            "aq-mode": [0, 1, 2, 3],
+            "weightp": [0, 1, 2],
+            "pix_fmt": ["yuv420p", "yuv422p", "yuv444p"],
+        }
+        self.__rate_control = {
+            # All rates in kbit/s
+            "singlepass": {
+                "ratecontrol": {
+                    "crf": {
+                        "crf": self.__encoding_sets["crf"],
+                    },
+                    "cbr": {
+                        "b:v": 1000,
+                        "minrate": 1000,
+                        "maxrate": 1000,
+                        "bufsize": 2000,
+                        "x264-params": {
+                            "hal-hrd": "cbr",
+                            "force-cfr": 1,
+                        },
+                    },
+                },
+            },
+            "doublepass": {
+                "ratecontrol": {
+                    "capped_crf": {
+                        "crf": self.__encoding_sets["crf"],
+                        "b:v": 1000,
+                        "minrate": 1000,
+                        "maxrate": 1000,
+                        "bufsize": 2000,
+                        "x264-params": {
+                            "hal-hrd": "cfr",
+                            "force-cfr": 1,
+                        },
+                    }
+                }
+            },
         }
 
     def verbosity(self, level):
@@ -174,6 +213,18 @@ class Options:
         """
         return self.__encoding_sets
 
+    def rate_control(self):
+        """
+        Return the rate control methods avaiiable.
+
+        Returns
+        -------
+        dict
+            Nested dictionary with rate control methods for the codec.
+
+        """
+        return self.__rate_control
+
     def insert_encoding_options(self, options):
         """
         Insert encoding options via dictionaries.
@@ -214,8 +265,8 @@ class Options:
         """
         if encoding_sets is not None and isinstance(encoding_sets, dict):
             for key, val in encoding_sets.items():
-                self.__encoding_sets[key] = val if \
-                    isinstance(val, list) else list(val)
+                self.__encoding_sets[key] = val \
+                    if isinstance(val, list) else list(val)
 
     def rate_control(self, rate_control=None):
         """
@@ -231,6 +282,6 @@ class Options:
         None.
 
         """
-        if rate_control is not None and rate_control in \
-                ["crf", "cbr", "capped_crf"]:
+        if rate_control is not None and \
+                rate_control in ["crf", "cbr", "capped_crf"]:
             self.__encode_options["rate_control"] = rate_control

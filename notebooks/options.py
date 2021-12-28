@@ -267,21 +267,3 @@ class Options:
             for key, val in encoding_sets.items():
                 self.__encoding_sets[key] = val \
                     if isinstance(val, list) else list(val)
-
-    def rate_control(self, rate_control=None):
-        """
-        Set the rate control method.
-
-        Parameters
-        ----------
-        rate_control : str, optional
-            One of "crf", "capped_crf", "cbr". The default is None.
-
-        Returns
-        -------
-        None.
-
-        """
-        if rate_control is not None and \
-                rate_control in ["crf", "cbr", "capped_crf"]:
-            self.__encode_options["rate_control"] = rate_control

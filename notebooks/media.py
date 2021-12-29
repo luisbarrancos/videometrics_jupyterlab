@@ -350,7 +350,7 @@ class Media:
         return frames
 
     @staticmethod
-    def video_bitrate(total_bitrate, audio_bitrate=0):
+    def __video_bitrate(total_bitrate, audio_bitrate=0):
         """
         Compute the video bitrate according to total and audio bitrate.
 
@@ -370,7 +370,7 @@ class Media:
         return total_bitrate - audio_bitrate
 
     @staticmethod
-    def audio_bitrate(video, audio_bitrate=0):
+    def __audio_bitrate(video, audio_bitrate=0):
         """
         Return the audio bitrate found in the audio stream, or overriden.
 
@@ -405,7 +405,7 @@ class Media:
         return 0
 
     @staticmethod
-    def total_bitrate(target_size_mib, duration_secs):
+    def __total_bitrate(target_size_mib, duration_secs):
         """
         Total bitrate to use for given size in MiB and duration in seconds.
 
@@ -445,10 +445,10 @@ class Media:
 
         """
         duration_secs = self.number_of_seconds(video)
-        total_bitrate = self.total_bitrate(target_size_mib, duration_secs)
+        total_bitrate = self.__total_bitrate(target_size_mib, duration_secs)
 
-        audio_bitrate = self.audio_bitrate(video)
-        video_bitrate = self.video_bitrate(
+        audio_bitrate = self.__audio_bitrate(video)
+        video_bitrate = self.__video_bitrate(
             total_bitrate,
             audio_bitrate=audio_bitrate
             )

@@ -20,6 +20,7 @@ class Encoder:
     def __init__(self, media, options):
         self.__media = media  # md.Media
         self.__options = options  # op.Options
+        self.__full_test_filenames = {}  # output basename + parameters
         # op.Options has
         # common_options | encode_options | encoding_sets (iters)
 
@@ -81,6 +82,20 @@ class Encoder:
         """
         return self.__options
 
+    def full_test_filenames(self):
+        """
+        Return the fully assembled VQA output test filenames.
+
+        Returns
+        -------
+        list
+            Return a list of strings with full formatted test filenames with
+            appended parameters in the form <output_base_filename>__+
+            <param>__<value>__(...).<ext>.
+            Example, foobar__crf_23__preset_high__... .mp4
+        """
+        return self.__full_test_filenames
+
     @staticmethod
     def encode_video(video_in, video_out, options, debug=False):
         """
@@ -113,7 +128,7 @@ class Encoder:
                 **options,
                 ).overwrite_output().run()
 
-    def encoding(self, video_in, video_out):
+    def encoding(self, video_in, video_out, debug=False):
         """
         Encode video with the option sets configuration.
 
@@ -123,12 +138,20 @@ class Encoder:
             Input video filename.
         video_out : str
             Output video filename.
+        debug: bool, optional
+            Skip encoding and print the full test filenames.
 
         Returns
         -------
-        None.
+        full_test_filenames : list
+            Return a list of strings with full formatted test filenames with
+            appended parameters in the form <output_base_filename>__+
+            <param>__<value>__(...).<ext>.
+            Example, foobar_-_crf_23__preset_high__... .mp4
 
         """
+        full_test_filenames = {video_in: []}
+
         for key, values in self.__options.encoding_sets().items():
             encode_options = cp.deepcopy(self.__options.encode_options())
             # key = "crf", val = [18, 23, 31] for example
@@ -145,14 +168,22 @@ class Encoder:
                 )
 
                 fname, ext = video_out.split(".")
-                fname = f"{fname}_{fname_suffix}.{ext}"
+                fname = f"{fname}_-_{fname_suffix}.{ext}"
+                # for each video input, store the variation sets of the
+                # compressed test videos
+                full_test_filenames[video_in].append(fname)
+
                 options = {
                     **self.__options.common_options(),
                     **encode_options
                     }
 
-                # print(f"input {video_in}, output = {fname}")
-                self.encode_video(video_in, fname, options)
+                if debug is True:
+                    print(f"input {video_in}, output = {fname}")
+                else:
+                    self.encode_video(video_in, fname, options)
+
+        self.__full_test_filenames = cp.deepcopy(full_test_filenames)
 
     def encode_videos(self):
         """

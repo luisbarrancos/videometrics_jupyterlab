@@ -8,6 +8,7 @@ Created on Wed Dec 29 00:56:07 2021
 
 
 import json
+from typing import Any, Dict, List, Optional, Union
 
 import pandas as pd
 from ffmpeg_quality_metrics import FfmpegQualityMetrics as ffqm
@@ -15,11 +16,12 @@ from ffmpeg_quality_metrics import FfmpegQualityMetrics as ffqm
 
 class VideoQualityTests:
     """ Video quality tests and auxiliary methods. """
-    def __init__(self, full_test_filenames: dict) -> None:
 
-        self.__metrics = ["ssim", "psnr", "vmaf", "vif"]
+    def __init__(self, full_test_filenames: Dict[str, List[str]]) -> None:
+
+        self.__metrics: List[str] = ["ssim", "psnr", "vmaf", "vif"]
         # dict( original : out_basename_params_encoding)
-        self.__full_test_filenames = full_test_filenames
+        self.__full_test_filenames: Dict[str, List[str]] = full_test_filenames
 
     @staticmethod
     def __moving_averages(
@@ -74,14 +76,17 @@ class VideoQualityTests:
         return dfn
 
     @staticmethod
-    def __get_dataframe(metric_data: dict, metric: str) -> pd.DataFrame:
+    def __get_dataframe(
+            metric_data: Dict[str, Any],
+            metric: str) -> Union[pd.DataFrame, None]:
+
         if metric in metric_data.keys():
             return pd.DataFrame.from_dict(metric_data[metric])
 
         print(f"No metric: {metric} found on metric data dict.")
         return None
 
-    def get_metrics(self) -> list:
+    def get_metrics(self) -> List[str]:
         """
         Get the list of video quality metrics used for the tests.
 
@@ -93,7 +98,7 @@ class VideoQualityTests:
         """
         return self.__metrics
 
-    def set_metrics(self, metrics: list) -> None:
+    def set_metrics(self, metrics: List[str]) -> None:
         """
         Set the list of metrics used for the tests.
 
@@ -113,7 +118,7 @@ class VideoQualityTests:
                 isinstance(metrics, list) else list(metrics)
 
     @staticmethod
-    def save_json(metrics_data: dict, json_filename: str) -> None:
+    def save_json(metrics_data: Dict[str, Any], json_filename: str) -> None:
         """
         Save metrics test data as JSON file.
 
@@ -135,7 +140,7 @@ class VideoQualityTests:
             file.write(metrics_json)
 
     @staticmethod
-    def load_json(filename: str) -> dict:
+    def load_json(filename: str) -> Union[Dict[str, Any], None]:
         """
         Load JSON metrics test results.
 
@@ -158,10 +163,10 @@ class VideoQualityTests:
     def run_metrics(
         video_in: str,
         video_out: str,
-        metrics: list,
-        progress: bool = False,
-        vmaf_options: dict = None
-        ) -> dict:
+        metrics: List[str],
+        progress: Optional[bool] = False,
+        vmaf_options: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
         """
         Run the FFMPEG metrics on the original and distorted media.
 
@@ -197,10 +202,10 @@ class VideoQualityTests:
 
     def run_tests(
         self,
-        metrics: list,
-        progress: bool = False,
-        vmaf_options: dict = None
-        ) -> None:
+        metrics: List[str],
+        progress: Optional[bool] = False,
+        vmaf_options: Optional[Dict[str, Any]] = None
+    ) -> None:
         """
         Run the metric tests for the entire media in the lists.
 
@@ -243,11 +248,11 @@ class VideoQualityTests:
     # get the dataframes for the metrics of an individual file
     def get_dataframes(
         self,
-        metric_data: dict,
-        moving_averages: bool = False,
-        mean_period: int = 50,
-        metrics: list = None
-        ) -> dict:
+        metric_data: Dict[str, Any],
+        moving_averages: Optional[bool] = False,
+        mean_period: Optional[int] = 50,
+        metrics: Optional[List[str]] = None
+    ) -> Dict[str, pd.DataFrame]:
         """
         Get Pandas DataFrames for the metrics data.
 
@@ -288,7 +293,7 @@ class VideoQualityTests:
 
         return dfs  # dict {"ssim" : df_ssim_metric, ...}
 
-    def get_all_data(self):
+    def get_all_data(self) -> List[Dict[str, Any]]:
         """
         Load the precomputed JSON metrics data for all I/O media.
 

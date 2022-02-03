@@ -6,6 +6,7 @@ Created on Sun Dec 26 11:08:01 2021
 @author: cgwork
 """
 import os
+from typing import Any, Dict, List, Optional, Union
 
 import ffmpeg
 from dotenv import dotenv_values
@@ -14,10 +15,10 @@ from dotenv import dotenv_values
 class Media:
     """Media interface for FFMPEG probe, containing related stream data."""
 
-    def __init__(self):
+    def __init__(self) -> None:
 
-        self.__config = {}
-        self.__info = {}
+        self.__config: Dict[Any, Any] = {}
+        self.__info: Dict[Any, Any] = {}
         self.__config["original_dir"] = os.getenv("VIDEO_RESOURCES", None)
         self.__config["compressed_dir"] = os.getenv("VIDEO_COMPRESSED", None)
 
@@ -35,11 +36,13 @@ class Media:
                     ", neither .env file defining them."
                 )
 
-        self.__containers = ["mp4", "mkv", "webm"]
-        self.__input_dir = self.__config["original_dir"]
-        self.__output_dir = self.__config["compressed_dir"]
+        self.__containers: List[str] = ["mp4", "mkv", "webm"]
+        self.__input_dir: Union[str, os.PathLike,
+                                None] = self.__config["original_dir"]
+        self.__output_dir: Union[str, os.PathLike,
+                                 None] = self.__config["compressed_dir"]
 
-    def glob_media(self, containers=None):
+    def glob_media(self, containers: List[str] = None) -> None:
         """
         Glob all media of extension set in containers.
 
@@ -56,8 +59,7 @@ class Media:
         None.
 
         """
-        _containers = containers if \
-            containers is not None else self.containers()
+        _containers = containers if containers is not None else self.containers()
 
         self.__config["media_in"] = [
             os.path.join(self.input_dir(), x)
@@ -70,7 +72,7 @@ class Media:
             if x.split(".")[1] in _containers
         ]
 
-    def input_dir(self):
+    def input_dir(self) -> Union[str, os.PathLike, None]:
         """
         Get the original source material directory.
 
@@ -82,7 +84,7 @@ class Media:
         """
         return self.__input_dir
 
-    def output_dir(self):
+    def output_dir(self) -> Union[str, os.PathLike, None]:
         """
         Get the compressed material directory.
 
@@ -94,13 +96,13 @@ class Media:
         """
         return self.__output_dir
 
-    def input_files(self):
+    def input_files(self) -> Union[List[str], None]:
         """
         Return a list of globbed files from the source material directory.
 
         Returns
         -------
-        list
+        List[str]
             List of media files under the source material directory.
 
         """
@@ -108,7 +110,7 @@ class Media:
             return self.__config["media_in"]
         return None
 
-    def output_files(self):
+    def output_files(self) -> Union[List[str], None]:
         """
         Return a list with output base filenames for compression.
 
@@ -122,7 +124,7 @@ class Media:
             return self.__config["media_out"]
         return None
 
-    def containers(self):
+    def containers(self) -> List[str]:
         """
         Return the list of containers to glob in the input media directory.
 
@@ -134,7 +136,7 @@ class Media:
         """
         return self.__containers
 
-    def config(self):
+    def config(self) -> Dict[str, Union[str, List[str]]]:
         """
         Return the configuration dictionary for input, compressed material.
 
@@ -149,7 +151,41 @@ class Media:
         """
         return self.__config
 
-    def info(self, media=None):
+    def set_input_dir(self, original_dir: str) -> None:
+        """
+        Set the directory containing the original source videos
+        overriding the environment VIDEO_RESOURCES.
+
+        Parameters
+        ----------
+        original_dir : str
+            The full path to the original media directory.
+
+        Returns
+        -------
+        None.
+
+        """
+        self.__config["original_dir"] = original_dir
+
+    def set_output_dir(self, compressed_dir: str) -> None:
+        """
+        Set the directory containing the compressed videos
+        overriding the environment VIDEO_COMPRESSED.
+
+        Parameters
+        ----------
+        compressed_dir : str
+            The full path to the compressed media directory.
+
+        Returns
+        -------
+        None.
+
+        """
+        self.__config["compressed_dir"] = compressed_dir
+
+    def info(self, media: Optional[str] = None) -> Dict[str, Any]:
         """
         Return the media probe information in a dictionary form.
 
@@ -176,14 +212,13 @@ class Media:
 
         """
         media_data = self.probe_all()
-        if media is not None and \
-                isinstance(media, str) and media in media_data:
+        if media is not None and isinstance(media, str) and media in media_data:
             return media_data[media]
 
         return self.probe_all()
 
     @staticmethod
-    def probe(video):
+    def probe(video: str) -> Dict[str, str]:
         """
         Return the video stream info via FFMPEG ffprobe.
 
@@ -200,12 +235,11 @@ class Media:
         """
         probe = ffmpeg.probe(video)
         video_info = next(
-            stream for stream in probe["streams"] if
-            stream["codec_type"] == "video"
+            stream for stream in probe["streams"] if stream["codec_type"] == "video"
         )
         return video_info
 
-    def probe_all(self):
+    def probe_all(self) -> Dict[str, Any]:
         """
         Video metadata/tags from every globbed media file in the source dir.
 
@@ -220,7 +254,7 @@ class Media:
             self.__info[str(video)] = self.probe(video)
         return self.__info
 
-    def width(self, video):
+    def width(self, video: str) -> int:
         """
         Return the width of the input video.
 
@@ -237,7 +271,7 @@ class Media:
         """
         return int(self.probe(video)["width"])
 
-    def height(self, video):
+    def height(self, video: str) -> int:
         """
         Return the height of the input video.
 
@@ -254,7 +288,7 @@ class Media:
         """
         return int(self.probe(video)["height"])
 
-    def framerate(self, video):
+    def framerate(self, video: str) -> int:
         """
         Return the frame rate (not average) of the input video file.
 
@@ -271,7 +305,10 @@ class Media:
         """
         return int(self.probe(video)["r_frame_rate"].split("/")[0])
 
-    def duration(self, video):
+    # according to docs, return type of Optional[type] is Union[typel, None]
+    # therefore nullable object, but we can use Union (explicit) or | (or)
+    # but the OR operator is only available in python 3.10+
+    def duration(self, video: str) -> Union[List[int], None]:
         """
         Get the input video duration in hh:mm:ss:msecs format.
 
@@ -299,10 +336,9 @@ class Media:
             lambda x: int(x) if len(x) < 3 else round(int(x) * 1e-6),
             [hours, minutes, seconds, milliseconds],
         )
-
         return [hours, minutes, seconds, milliseconds]
 
-    def number_of_seconds(self, video):
+    def number_of_seconds(self, video: str) -> int:
         """
         Get the duration of the input video in seconds.
 
@@ -320,7 +356,7 @@ class Media:
         hours, minutes, seconds, milliseconds = self.duration(video)
         return round(hours * 3600 + minutes * 60 + seconds + milliseconds)
 
-    def number_of_frames(self, video):
+    def number_of_frames(self, video: str) -> int:
         """
         Get the duration of the input video in frames, depends on frame rate.
 
@@ -343,14 +379,13 @@ class Media:
 
         hours, mins, secs, milliseconds = self.duration(video)
         remaining_frames = int((milliseconds / float(time_base)) * frame_rate)
-        frames = frame_rate * (
-            3600 * hours + 60 * mins + secs
-            ) + remaining_frames
+        frames = frame_rate * (3600 * hours + 60 *
+                               mins + secs) + remaining_frames
 
         return frames
 
     @staticmethod
-    def __video_bitrate(total_bitrate, audio_bitrate=0):
+    def __video_bitrate(total_bitrate: int, audio_bitrate: Optional[int] = 0) -> int:
         """
         Compute the video bitrate according to total and audio bitrate.
 
@@ -370,7 +405,7 @@ class Media:
         return total_bitrate - audio_bitrate
 
     @staticmethod
-    def __audio_bitrate(video, audio_bitrate=0):
+    def __audio_bitrate(video: str, audio_bitrate: Optional[int] = 0) -> int:
         """
         Return the audio bitrate found in the audio stream, or overriden.
 
@@ -405,7 +440,7 @@ class Media:
         return 0
 
     @staticmethod
-    def __total_bitrate(target_size_mib, duration_secs):
+    def __total_bitrate(target_size_mib: int, duration_secs: int) -> int:
         """
         Total bitrate to use for given size in MiB and duration in seconds.
 
@@ -425,7 +460,7 @@ class Media:
         # convert to KiB, then to Kbit/s
         return int(target_size_mib * 1024 * 8 / float(duration_secs))
 
-    def bitrates_for_size(self, video, target_size_mib):
+    def bitrates_for_size(self, video: str, target_size_mib: int) -> Dict[str, int]:
         """
         Total, audio, video bitrates for given media and desired file size.
 
@@ -449,9 +484,7 @@ class Media:
 
         audio_bitrate = self.__audio_bitrate(video)
         video_bitrate = self.__video_bitrate(
-            total_bitrate,
-            audio_bitrate=audio_bitrate
-            )
+            total_bitrate, audio_bitrate=audio_bitrate)
 
         return {
             "total_bitrate": total_bitrate,

@@ -6,18 +6,22 @@ Created on Sun Dec 26 06:08:14 2021
 @author: cgwork
 """
 
+from typing import Any, Dict, List, Optional, Union
+
 
 class Options:
     """A class for FFMPEG encoding options."""
 
-    __verbosity = ["warning", "error", "panic"]
-    __vcodecs = ["libx264", "libx265", "libvpx", "libvpx-vp9", "libaom-av1"]
-    __acodecs = ["copy", "aac", "mp3", "vorbis"]
-    __containers = ["mp4", "mkv", "webm"]
-    __chroma_sampling = ["yuv420p", "yuv422p", "yuv444p"]
+    __verbosity: List[str] = ["warning", "error", "panic"]
+    __vcodecs: List[str] = ["libx264", "libx265",
+                            "libvpx", "libvpx-vp9", "libaom-av1"]
+    __acodecs: List[str] = ["copy", "aac", "mp3", "vorbis"]
+    __containers: List[str] = ["mp4", "mkv", "webm"]
+    __chroma_sampling: List[str] = ["yuv420p", "yuv422p", "yuv444p"]
 
-    def __init__(self):
-        self.__common_options = {
+    def __init__(self) -> None:
+
+        self.__common_options: Dict[str, str] = {
             "c:v": "libx264",
             "f": "mp4",
             "coder": "cabac",
@@ -27,7 +31,7 @@ class Options:
             "loglevel": "error",
             "export_side_data": "venc_params",
         }
-        self.__encode_options = {
+        self.__encode_options: Dict[str, Union[str, int]] = {
             "crf": 23,
             "preset": "veryfast",
             "tune": "film",
@@ -36,7 +40,7 @@ class Options:
             "weightp": -1,
             "pix_fmt": "yuv420p",
         }
-        self.__encoding_sets = {
+        self.__encoding_sets: Dict[str, Union[List[int], List[str], str]] = {
             "crf": [18, 23, 27, 36],
             "preset": ["veryfast", "medium", "slower"],
             "tune": ["film", "animation", "grain"],
@@ -45,7 +49,7 @@ class Options:
             "weightp": [0, 1, 2],
             "pix_fmt": self.__chroma_sampling,
         }
-        self.__rate_control = {
+        self.__rate_control: Dict[str, Any] = {
             # All rates in kbit/s
             "singlepass": {
                 "ratecontrol": {
@@ -81,7 +85,7 @@ class Options:
             },
         }
 
-    def verbosity(self, level):
+    def verbosity(self, level: str) -> None:
         """
         Set the FFMPEG encoding log level.
 
@@ -98,7 +102,7 @@ class Options:
         if level in self.__verbosity:
             self.__common_options["loglevel"] = level
 
-    def entropy_encoding(self, coder):
+    def entropy_encoding(self, coder: str) -> None:
         """
         Set the choice of entropy encoding.
 
@@ -115,7 +119,7 @@ class Options:
         if coder in ["cabac", "cavlc", "ac"]:
             self.__common_options["coder"] = coder
 
-    def container(self, container):
+    def container(self, container: str) -> None:
         """
         Set the choice of container for the codec used. MP4, MKV, WEBM only.
 
@@ -132,7 +136,9 @@ class Options:
         if container in self.__containers:
             self.__common_options["f"] = container
 
-    def codec(self, vcodec=None, acodec=None):
+    def codec(self,
+              vcodec: Optional[str] = None,
+              acodec: Optional[str] = None) -> None:
         """
         Set the video and/or audio codecs fr compression.
 
@@ -156,7 +162,7 @@ class Options:
         if acodec is not None and acodec in self.__acodecs:
             self.__common_options["c:a"] = acodec
 
-    def chroma_sampling(self, sampling):
+    def chroma_sampling(self, sampling: str) -> None:
         """
         Set the chroma sampling for the compression.
 
@@ -174,7 +180,7 @@ class Options:
         if sampling in self.__chroma_sampling:
             self.__encode_options["pix_fmt"] = sampling
 
-    def common_options(self):
+    def common_options(self) -> Dict[str, Any]:
         """
         Return the common options used for compression.
 
@@ -187,7 +193,7 @@ class Options:
         """
         return self.__common_options
 
-    def encode_options(self):
+    def encode_options(self) -> Dict[str, Any]:
         """
         Return the compression options that will be used.
 
@@ -201,7 +207,7 @@ class Options:
         """
         return self.__encode_options
 
-    def encoding_sets(self):
+    def encoding_sets(self) -> Dict[str, Any]:
         """
         Return the test methods dictionary.
 
@@ -213,9 +219,9 @@ class Options:
         """
         return self.__encoding_sets
 
-    def rate_control(self):
+    def rate_control(self) -> Dict[str, Any]:
         """
-        Return the rate control methods avaiiable.
+        Return the rate control methods available.
 
         Returns
         -------
@@ -225,7 +231,7 @@ class Options:
         """
         return self.__rate_control
 
-    def insert_encoding_options(self, options):
+    def insert_encoding_options(self, options: Dict[Any, Any]) -> None:
         """
         Insert encoding options via dictionaries.
 
@@ -244,7 +250,8 @@ class Options:
             for key, val in options:
                 self.__encode_options[key] = val
 
-    def insert_encoding_sets(self, encoding_sets):
+    def insert_encoding_sets(self,
+                             encoding_sets: Optional[Dict[str, Any]]) -> None:
         """
         Insert encoding sets as dictionary of lists.
 

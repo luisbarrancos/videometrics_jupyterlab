@@ -7,24 +7,25 @@ Created on Mon Dec 27 06:44:38 2021
 """
 
 import copy as cp
+from typing import Any, Dict, List, Optional, Union
 
 import ffmpeg
-
-# import media as md
-# import options as op
+from media import Media
+from options import Options
 
 
 class Encoder:
     """Automated video encoding class through FFMPEG parameter sets."""
 
-    def __init__(self, media, options):
-        self.__media = media  # md.Media
-        self.__options = options  # op.Options
-        self.__full_test_filenames = {}  # output basename + parameters
+    def __init__(self, media: Union[Media, None], options: Union[Options, None]) -> None:
+        self.__media: Media = media  # md.Media
+        self.__options: Options = options  # op.Options
+        # output basename + parameters
+        self.__full_test_filenames: Dict[str, Any] = {}
         # op.Options has
         # common_options | encode_options | encoding_sets (iters)
 
-    def set_media(self, media):
+    def set_media(self, media: Union[Media, None]) -> None:
         """
         Set the input media and output media object.
 
@@ -41,7 +42,7 @@ class Encoder:
         if media is not None and isinstance(media, media.Media):
             self.__media = media
 
-    def set_options(self, options):
+    def set_options(self, options: Union[Options, None]) -> None:
         """
         Set the options for encoding.
 
@@ -58,7 +59,7 @@ class Encoder:
         if options is not None and isinstance(options, options.Options):
             self.__options = options
 
-    def media(self):
+    def media(self) -> Media:
         """
         Getter for media object instance.
 
@@ -70,7 +71,7 @@ class Encoder:
         """
         return self.__media
 
-    def options(self):
+    def options(self) -> Options:
         """
         Geetter for options object instance.
 
@@ -82,7 +83,7 @@ class Encoder:
         """
         return self.__options
 
-    def full_test_filenames(self):
+    def full_test_filenames(self) -> List[str]:
         """
         Return the fully assembled VQA output test filenames.
 
@@ -97,7 +98,11 @@ class Encoder:
         return self.__full_test_filenames
 
     @staticmethod
-    def encode_video(video_in, video_out, options, debug=False):
+    def encode_video(
+            video_in: str,
+            video_out: str,
+            options: Options,
+            debug: Optional[bool] = False) -> None:
         """
         Encode video with the FFMPEG options passed.
 
@@ -126,9 +131,12 @@ class Encoder:
                 vin,
                 video_out,
                 **options,
-                ).overwrite_output().run()
+            ).overwrite_output().run()
 
-    def encoding(self, video_in, video_out, debug=False):
+    def encoding(self,
+                 video_in: str,
+                 video_out: str,
+                 debug: Optional[bool] = False) -> List[str]:
         """
         Encode video with the option sets configuration.
 
@@ -150,6 +158,11 @@ class Encoder:
             Example, foobar_-_crf_23__preset_high__... .mp4
 
         """
+        # make it nested dict then
+        #        full_test_filenames[video_in][fname] = {
+        #            "options" : options,
+        #            "dfmetrics" : {}
+        #            }
         full_test_filenames = {video_in: []}
 
         for key, values in self.__options.encoding_sets().items():
@@ -176,7 +189,7 @@ class Encoder:
                 options = {
                     **self.__options.common_options(),
                     **encode_options
-                    }
+                }
 
                 if debug is True:
                     print(f"input {video_in}, output = {fname}")
@@ -185,7 +198,7 @@ class Encoder:
 
         self.__full_test_filenames = cp.deepcopy(full_test_filenames)
 
-    def encode_videos(self):
+    def encode_videos(self, debug: Optional[bool] = False) -> None:
         """
         Encode all the input list videos with the options set.
 
@@ -194,7 +207,8 @@ class Encoder:
         None.
 
         """
+        # foreach video in, output file in the zipped lists
         for video_in, video_out in zip(
             self.__media.input_files(), self.__media.output_files()
         ):
-            self.encoding(video_in, video_out)
+            self.encoding(video_in, video_out, debug=debug)

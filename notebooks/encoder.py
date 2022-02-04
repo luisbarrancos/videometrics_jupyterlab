@@ -72,7 +72,7 @@ class Encoder:
 
     def options(self):
         """
-        Geetter for options object instance.
+        Getter for options object instance.
 
         Returns
         -------
@@ -126,7 +126,7 @@ class Encoder:
                 vin,
                 video_out,
                 **options,
-                ).overwrite_output().run()
+            ).overwrite_output().run()
 
     def encoding(self, video_in, video_out, debug=False):
         """
@@ -176,7 +176,7 @@ class Encoder:
                 options = {
                     **self.__options.common_options(),
                     **encode_options
-                    }
+                }
 
                 if debug is True:
                     print(f"input {video_in}, output = {fname}")
@@ -185,7 +185,8 @@ class Encoder:
 
         self.__full_test_filenames = cp.deepcopy(full_test_filenames)
 
-    def encode_videos(self):
+
+    def encode_videos(self, debug=False):
         """
         Encode all the input list videos with the options set.
 
@@ -197,4 +198,55 @@ class Encoder:
         for video_in, video_out in zip(
             self.__media.input_files(), self.__media.output_files()
         ):
-            self.encoding(video_in, video_out)
+            self.encoding(video_in, video_out, debug=debug)
+
+
+    def qualify_output_files(self):
+        """
+        Build fully qualified output file names with the parameter sets.
+
+        Build a complete filename from the output base name, with the
+        parameter set variations appended, i.e, basename_crf_23_... .ext
+
+        Returns
+        -------
+        dict
+            Dictionary where the key is the input media filename, and the
+            values is a list of the parameter set variations fully qualified
+            output filenames.
+
+        """
+
+        if self.__media.input_files() is not None and \
+                self.__media.output_files() is not None:
+
+            full_test_filenames = {}
+
+            for video_in, video_out in zip(
+                    self.__media.input_files(), self.__media.output_files()):
+
+                full_test_filenames[video_in] = []
+
+                for key, values in self.__options.encoding_sets().items():
+                    encode_options = cp.deepcopy(
+                        self.__options.encode_options())
+                    # key = "crf", val = [18, 23, 31] for example
+
+                    for val in values:
+                        encode_options[key] = val
+
+                        fname_suffix = "__".join(
+                            map(
+                                lambda x, y: x + "_" + str(y),
+                                encode_options.keys(),
+                                encode_options.values(),
+                            )
+                        )
+
+                        fname, ext = video_out.split(".")
+                        fname = f"{fname}_-_{fname_suffix}.{ext}"
+                        # for each video input, store the variation sets of the
+                        # compressed test videos
+                        full_test_filenames[video_in].append(fname)
+            return full_test_filenames
+        return None

@@ -6,15 +6,25 @@ Created on Fri Feb  4 11:38:42 2022
 @author: cgwork
 """
 
-from dataclasses import dataclass, field
+import json
+
+from dataclasses import asdict, dataclass, field
 from os import PathLike
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Union, Type, TextIO
+
+# define a type hint for JSON files, but Pandas DataFrames must be
+# converted. This however is a general data structure, not the file itself
+# NOTE: not so sure about this
+JSON = Union[Dict[str, Any], List[Any], int, str, float, bool, Type[None]]
 
 #from media import Media
 #from options import Options
 from pandas import DataFrame
 
 """
+# NOTE: originally VQ metrics is a dict, which makes things easier to
+# move back into a pandas dataframe
+
 container =
 {
     inputdir:
@@ -80,6 +90,8 @@ class VideoQuality:
         del self._metrics
 
 
+# VideoQuality = dict of dataframes, to/from json as well, save with
+# same FQN output with extension changed
 @dataclass
 class QualifiedOutput:
     _fqn_output: Dict[Union[str, PathLike],
@@ -248,13 +260,40 @@ class MediaContainer:
 
 
 
+# Serialization/deserialization to JSON via dataclasses asdict and
+# make_dataclasses, however we can also use orsjon and serde which have
+# some bells & whistles, besides being fast as well
+
+class Container:
+
+    def __init__(self):
+        pass
+
+    def to_json(self, container : MediaContainer) -> None:
+        pass
+
+    def from_json(self, json_file : Union[str, PathLike]) -> MediaContainer:
+        with open(json_file, "r") as json_f:
+            data = json.load(json_f)
+
+
+
+
+
+# jsonpickle: https://github.com/jsonpickle/jsonpickle?ref=pythonrepo.com
+# pyserde (serde) : https://github.com/yukinarit/pyserde
+# orjson : https://github.com/ijl/orjson?ref=pythonrepo.com
+# marshmallow : https://github.com/marshmallow-code/marshmallow
 
 from media import Media
+from dataclasses import asdict
+import json
 
 md = Media()
 md.glob_media()
 md.input_files()
-
-
 mc = MediaContainer(md.input_dir(), md.probe_all())
 
+#json_foo = json.dumps(asdict(mc))
+#print(type(json_foo))
+#print(json_foo)

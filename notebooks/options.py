@@ -156,6 +156,19 @@ class Options:
         if acodec is not None and acodec in self.__acodecs:
             self.__common_options["c:a"] = acodec
 
+    def codecs(self):
+        """
+        Return dict with the list of video and audio codecs.
+
+        Returns
+        -------
+        Dict[str, List[str]]
+            List of codecs for the encoding sets processing.
+
+        """
+        return {"videocodecs" : self.__vcodecs,
+                "audiocodecs" : self.__acodecs}
+
     def chroma_sampling(self, sampling):
         """
         Set the chroma sampling for the compression.

@@ -93,6 +93,26 @@ class MediaTests:
         # when you build paramsets, it is the list in values
         # so, you can build here a simpler version
         # basename_paramset_setting
+        #
+        # Encoder.fqn(basename) returns [paramset[fqn], ...]
+        # you must iterate over the paramsets
+        # so, instead of
+        # paramsets = {j:{} for j in op.encoding_sets().keys()}
+        #
+        # paramsets = {key:
+        #    [
+        #        build_fname(op.encode_options, key, values, basename)
+        #    ]
+        #    for key, values in op.encoding_sets().items()}
+        #
+        # and build_fname(encode_options, key, values, basename)
+        # returns an item of the list associated w param set key
+        #
+        # for val in values:
+        #    encode_options[key] = val
+        #    fname_suffix = "__".join(map(lambda x, y: x + "_" + str(y),
+        # encode_options().keys(), op.encode_options().values()
+        #
 
 
         self.__mc.outputdata = {

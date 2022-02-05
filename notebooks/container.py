@@ -17,8 +17,13 @@ from typing import Any, Dict, List, Union, Type, TextIO
 # NOTE: not so sure about this
 JSON = Union[Dict[str, Any], List[Any], int, str, float, bool, Type[None]]
 
+#NOTE: encode needs a cleanup to interface with this dataclass
 #from media import Media
 #from options import Options
+#from encoder import Encoder
+
+# import ffqm_metrics
+
 from pandas import DataFrame
 
 """
@@ -71,6 +76,13 @@ container =
         ...
     ]
 }
+
+Each dataframe has:
+frame number | metric on Y | metric on U | metric on V
+and from stochastic/statistics, SMA/EMA, simple/exponential moving averages
+where the window is 1 or 2 seconds (so, 1, 2x the framerate)
+plus some extras.
+
 """
 
 @dataclass
@@ -263,6 +275,13 @@ class MediaContainer:
 # Serialization/deserialization to JSON via dataclasses asdict and
 # make_dataclasses, however we can also use orsjon and serde which have
 # some bells & whistles, besides being fast as well
+# NOTE: scratch that, serde does not support PathLike, orjson seems more
+#       tuned towards web. Marshmallow seems to provide schemas for DBs,
+#       and marshmallow-dataclass an interface to avoid code duplication,
+#       that is, the schema and the dataclass structure, while hmm
+#       marshmallow-dataframe provides an interface for pandas dataframes
+#       and finally, marshmallow-sqlalchemy an interface for SQL DBs.
+#       So, we end up where' SQLite? MongoDB?
 
 class Container:
 
@@ -275,10 +294,6 @@ class Container:
     def from_json(self, json_file : Union[str, PathLike]) -> MediaContainer:
         with open(json_file, "r") as json_f:
             data = json.load(json_f)
-
-
-
-
 
 # jsonpickle: https://github.com/jsonpickle/jsonpickle?ref=pythonrepo.com
 # pyserde (serde) : https://github.com/yukinarit/pyserde

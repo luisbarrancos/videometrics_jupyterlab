@@ -11,7 +11,8 @@ class Options:
     """A class for FFMPEG encoding options."""
 
     __verbosity = ["warning", "error", "panic"]
-    __vcodecs = ["libx264", "libx265", "libvpx", "libvpx-vp9", "libaom-av1"]
+    __vcodecs = [
+        "libx264", "libx265", "libvpx", "libvpx-vp9", "libaom-av1"]
     __acodecs = ["copy", "aac", "mp3", "vorbis"]
     __containers = ["mp4", "mkv", "webm"]
     __chroma_sampling = ["yuv420p", "yuv422p", "yuv444p"]

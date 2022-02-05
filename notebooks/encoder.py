@@ -281,3 +281,19 @@ class Encoder:
             full_test_filenames.append(paramlist)
 
         return full_test_filenames
+
+    def build_fname(self, key, values, basename):
+        enc = cp.deepcopy(self.__options.encode_options())
+        paramlist = []
+        for val in values:
+            enc[key] = val
+            fname_suffix = "__".join(
+                map(lambda x, y: x + "_" + str(y),
+                    enc.keys(),
+                    enc.values(),
+                    )
+                )
+            fname, ext = basename.split(".")
+            fname = f"{fname}_-_{fname_suffix}.{ext}"
+            paramlist.append(fname)
+        return paramlist

@@ -112,6 +112,7 @@ class VideoQuality:
 
 @dataclass
 class VideoQuality(DataClassJSONMixin):
+    """ VQ Metrics container, for different video metrics. """
     _metrics: Dict[str, Dict[str, Any]] = field(default_factory=dict)
 
     @property
@@ -131,6 +132,7 @@ class VideoQuality(DataClassJSONMixin):
 # same FQN output with extension changed
 @dataclass
 class QualifiedOutput(DataClassJSONMixin):
+    """ Qualified output name for each compressed video and VQ metrics."""
     _fqn_output: Dict[Union[str, PathLike],
                       VideoQuality] = field(default_factory=dict)
 
@@ -149,6 +151,7 @@ class QualifiedOutput(DataClassJSONMixin):
 
 @dataclass
 class Parameters(DataClassJSONMixin):
+    """ Encoding parameter sets associated with each QO container."""
     _param_set: Dict[str, QualifiedOutput] = field(default_factory=dict)
 
     @property
@@ -166,6 +169,7 @@ class Parameters(DataClassJSONMixin):
 
 @dataclass
 class Codec(DataClassJSONMixin):
+    """ Video codec associated with each parameter set."""
     _vcodec: Dict[str, Parameters] = field(default_factory=dict)
     # _acodec, copy
 
@@ -184,6 +188,7 @@ class Codec(DataClassJSONMixin):
 
 @dataclass
 class MediaInfo(DataClassJSONMixin):
+    """ Input media and FFprobe storage for each source material file."""
     _mediainfo: Dict[Union[str, PathLike],
                      Dict[str, Any]] = field(default_factory=dict)
 
@@ -202,6 +207,7 @@ class MediaInfo(DataClassJSONMixin):
 
 @dataclass
 class OutputBasename(DataClassJSONMixin):
+    """ Output file basename for each input source media."""
     _output_basename: Dict[str, Codec] = field(default_factory=dict)
 
     @property
@@ -287,6 +293,29 @@ class MediaContainer(DataClassJSONMixin):
 def save_mc(mc_inst: MediaContainer,
             filename: Union[str, PathLike],
             overwrite: Optional[bool] = True) -> None:
+    """
+    Save the MediaContainer into a JSON file.
+
+    Parameters
+    ----------
+    mc_inst : MediaContainer
+        MediaContainer storage for original and compressed material, metrics.
+    filename : Union[str, PathLike]
+        Output filename for the JSON file.
+    overwrite : Optional[bool], optional
+        Toggles overwriting an existing JSON file. The default is True.
+
+    Raises
+    ------
+    FileExistsError
+        Raises an exception if an attempt to overwrite an existing file is made
+        without being explicitly set as permitted via the overwrite flag.
+
+    Returns
+    -------
+    None
+
+    """
     if overwrite is False and os.path.exists(filename):
         raise FileExistsError
 
@@ -299,6 +328,25 @@ def save_mc(mc_inst: MediaContainer,
 
 
 def load_mc(filename: Union[str, PathLike]) -> MediaContainer:
+    """
+    Load a previously saved JSON file into a MediaContainer instance.
+
+    Parameters
+    ----------
+    filename : Union[str, PathLike]
+        File containing the media container data.
+
+    Raises
+    ------
+    IOError
+        Exception raised if there is any I/O error with the given file.
+
+    Returns
+    -------
+    MediaContainer
+        An instance of MediaContainer class filled with the saved data.
+
+    """
     if not os.path.exists(filename):
         raise IOError
 

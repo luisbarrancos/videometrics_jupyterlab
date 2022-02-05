@@ -70,6 +70,7 @@ class Media:
             if x.split(".")[1] in _containers
         ]
 
+    @property
     def input_dir(self):
         """
         Get the original source material directory.
@@ -82,6 +83,24 @@ class Media:
         """
         return self.__input_dir
 
+    @input_dir.setter
+    def input_dir(self, inputdir) -> None:
+        """
+        Set the source media directory overriding the environment.
+
+        Parameters
+        ----------
+        inputdir : Union[str, os.PathLike]
+            The path for the input directory, overriding the environment.
+
+        Returns
+        -------
+        None.
+
+        """
+        self.__input_dir = inputdir
+
+    @property
     def output_dir(self):
         """
         Get the compressed material directory.
@@ -93,6 +112,23 @@ class Media:
 
         """
         return self.__output_dir
+
+    @output_dir.setter
+    def output_dir(self, outdir) -> None:
+        """
+        Set the compressed material directory, overriding the environment.
+
+        Parameters
+        ----------
+        outdir : Union[str, os.PathLike]
+            Directory for compressed footage, overriding the environment.
+
+        Returns
+        -------
+        None
+
+        """
+        self.__output_dir = outdir
 
     def input_files(self):
         """

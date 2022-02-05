@@ -1,30 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb  4 11:38:42 2022
+Created on Fri Feb  4 18:22:45 2022
 
 @author: cgwork
 """
 
-import json
+# marshmallow schemas
+# marshmallow-dataclass (mm schemas from dataclasses)
+# marshmallow-dataframes (same for pandas dataframes)
+# https://github.com/Fatal1ty/mashumaro
 
-from dataclasses import asdict, dataclass, field
-from os import PathLike
-from typing import Any, Dict, List, Union, Type, TextIO
+import os
+from dataclasses import dataclass, field
+from typing import Any, Dict, List, Optional, Union
 
-# define a type hint for JSON files, but Pandas DataFrames must be
-# converted. This however is a general data structure, not the file itself
-# NOTE: not so sure about this
-JSON = Union[Dict[str, Any], List[Any], int, str, float, bool, Type[None]]
-
-#NOTE: encode needs a cleanup to interface with this dataclass
-#from media import Media
-#from options import Options
-#from encoder import Encoder
-
-# import ffqm_metrics
-
-from pandas import DataFrame
+from mashumaro import DataClassJSONMixin
 
 """
 # NOTE: originally VQ metrics is a dict, which makes things easier to
@@ -77,14 +68,6 @@ container =
     ]
 }
 
-Each dataframe has:
-frame number | metric on Y | metric on U | metric on V
-and from stochastic/statistics, SMA/EMA, simple/exponential moving averages
-where the window is 1 or 2 seconds (so, 1, 2x the framerate)
-plus some extras.
-
-"""
-
 @dataclass
 class VideoQuality:
     _metrics: Dict[str, DataFrame] = field(default_factory=dict)
@@ -100,21 +83,41 @@ class VideoQuality:
     @metrics.deleter
     def metrics(self) -> None:
         del self._metrics
+"""
+
+
+@dataclass
+class VideoQuality(DataClassJSONMixin):
+    """ VQ Metrics container, for different video metrics. """
+    _metrics: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+
+    @property
+    def metrics(self) -> Dict[str, Dict[str, Any]]:
+        return self._metrics
+
+    @metrics.setter
+    def metrics(self, data: Dict[str, Dict[str, Any]]) -> None:
+        self._metrics = data
+
+    @metrics.deleter
+    def metrics(self) -> None:
+        del self._metrics
 
 
 # VideoQuality = dict of dataframes, to/from json as well, save with
 # same FQN output with extension changed
 @dataclass
-class QualifiedOutput:
-    _fqn_output: Dict[Union[str, PathLike],
+class QualifiedOutput(DataClassJSONMixin):
+    """ Qualified output name for each compressed video and VQ metrics."""
+    _fqn_output: Dict[Union[str, os.PathLike],
                       VideoQuality] = field(default_factory=dict)
 
     @property
-    def entries(self) -> Dict[Union[str, PathLike], VideoQuality]:
+    def entries(self) -> Dict[Union[str, os.PathLike], VideoQuality]:
         return self._fqn_output
 
     @entries.setter
-    def entries(self, outfile: Union[str, PathLike], videoqual: VideoQuality) -> None:
+    def entries(self, outfile: Union[str, os.PathLike], videoqual: VideoQuality) -> None:
         self._fqn_output[outfile] = videoqual
 
     @entries.deleter
@@ -123,7 +126,8 @@ class QualifiedOutput:
 
 
 @dataclass
-class Parameters:
+class Parameters(DataClassJSONMixin):
+    """ Encoding parameter sets associated with each QO container."""
     _param_set: Dict[str, QualifiedOutput] = field(default_factory=dict)
 
     @property
@@ -140,7 +144,8 @@ class Parameters:
 
 
 @dataclass
-class Codec:
+class Codec(DataClassJSONMixin):
+    """ Video codec associated with each parameter set."""
     _vcodec: Dict[str, Parameters] = field(default_factory=dict)
     # _acodec, copy
 
@@ -158,76 +163,60 @@ class Codec:
 
 
 @dataclass
-class MediaInfo:
-    _mediainfo: Dict[Union[str, PathLike],
+class MediaInfo(DataClassJSONMixin):
+    """ Input media and FFprobe storage for each source material file."""
+    _mediainfo: Dict[Union[str, os.PathLike],
                      Dict[str, Any]] = field(default_factory=dict)
 
     @property
-    def info(self) -> Dict[Union[str, PathLike], Dict[str, Any]]:
+    def mediainfo(self) -> Dict[Union[str, os.PathLike], Dict[str, Any]]:
         return self._mediainfo
 
-    @info.setter
-    def info(self, input_info: Dict[Union[str, PathLike], Dict[str, Any]]) -> None:
+    @mediainfo.setter
+    def mediainfo(self, input_info: Dict[Union[str, os.PathLike], Dict[str, Any]]) -> None:
         self._mediainfo = input_info
 
-    @info.deleter
-    def info(self) -> None:
+    @mediainfo.deleter
+    def mediainfo(self) -> None:
         del self._mediainfo
 
 
 @dataclass
-class OutputBasename:
-    _output: Dict[str, Codec] = field(default_factory=dict)
+class OutputBasename(DataClassJSONMixin):
+    """ Output file basename for each input source media."""
+    _output_basename: Dict[str, Codec] = field(default_factory=dict)
 
     @property
-    def output_file(self) -> Dict[str, Codec]:
-        return self._output
+    def output_basename(self) -> Dict[str, Codec]:
+        return self._output_basename
 
-    @output_file.setter
-    def output_file(self, out_name: str, cdc: Codec) -> None:
-        self._output[out_name] = cdc
+    @output_basename.setter
+    def output_basename(self, out_name: str, cdc: Codec) -> None:
+        self._output_basename[out_name] = cdc
 
-    @output_file.deleter
-    def output_file(self) -> None:
-        del self._output
+    @output_basename.deleter
+    def output_basename(self) -> None:
+        del self._output_basename
 
 
 @dataclass
-class InputMediaInfo:
-    _input: MediaInfo = field(default_factory=MediaInfo)
-
-    @property
-    def input_file(self) -> MediaInfo:
-        return self._input
-
-    @input_file.setter
-    def input_file(self, minfo: MediaInfo) -> None:
-        self._input = minfo
-
-    @input_file.deleter
-    def input_file(self) -> None:
-        del self._input
-
-
-@dataclass
-class MediaContainer:
+class MediaContainer(DataClassJSONMixin):
     """Automated video encoding class through FFMPEG parameter sets."""
     # dir on which to glob files
-    _inputdir: Union[str, PathLike] = field(default_factory=str)
+    _inputdir: Union[str, os.PathLike] = field(default_factory=str)
     # probe all , for all globbed files under inputdir, this is a media info obj
     _inputdata: MediaInfo = field(default_factory=MediaInfo)
-
     # same for output directory
-    _outputdir: Union[str, PathLike] = field(default_factory=str)
+    _outputdir: Union[str, os.PathLike] = field(default_factory=str)
     # and the storage for the dictionaries, dataframes
     _outputdata: List[OutputBasename] = field(default_factory=list)
 
     @property
-    def inputdir(self) -> Union[str, PathLike]:
+    def inputdir(self) -> Union[str, os.PathLike]:
         return self._inputdir
 
     @inputdir.setter
-    def inputdir(self, indir: Union[str, PathLike]) -> None:
+    def inputdir(self, indir: Union[str, os.PathLike]) -> None:
         self._inputdir = indir
 
     @inputdir.deleter
@@ -235,11 +224,11 @@ class MediaContainer:
         del self._inputdir
 
     @property
-    def outputdir(self) -> Union[str, PathLike]:
+    def outputdir(self) -> Union[str, os.PathLike]:
         return self._outputdir
 
     @outputdir.setter
-    def outputdir(self, outdir: Union[str, PathLike]) -> None:
+    def outputdir(self, outdir: Union[str, os.PathLike]) -> None:
         self._outputdir = outdir
 
     @outputdir.deleter
@@ -271,44 +260,90 @@ class MediaContainer:
         del self._outputdata
 
 
-
 # Serialization/deserialization to JSON via dataclasses asdict and
-# make_dataclasses, however we can also use orsjon and serde which have
-# some bells & whistles, besides being fast as well
-# NOTE: scratch that, serde does not support PathLike, orjson seems more
-#       tuned towards web. Marshmallow seems to provide schemas for DBs,
-#       and marshmallow-dataclass an interface to avoid code duplication,
-#       that is, the schema and the dataclass structure, while hmm
-#       marshmallow-dataframe provides an interface for pandas dataframes
-#       and finally, marshmallow-sqlalchemy an interface for SQL DBs.
-#       So, we end up where' SQLite? MongoDB?
-
-class Container:
-
-    def __init__(self):
-        pass
-
-    def to_json(self, container : MediaContainer) -> None:
-        pass
-
-    def from_json(self, json_file : Union[str, PathLike]) -> MediaContainer:
-        with open(json_file, "r") as json_f:
-            data = json.load(json_f)
-
-# jsonpickle: https://github.com/jsonpickle/jsonpickle?ref=pythonrepo.com
-# pyserde (serde) : https://github.com/yukinarit/pyserde
-# orjson : https://github.com/ijl/orjson?ref=pythonrepo.com
+# make_dataclasses, however mashumiro already extends the dataclass with
+# to_json, from_json methods.
+# The only interesting tidbit left is:
 # marshmallow : https://github.com/marshmallow-code/marshmallow
 
-from media import Media
-from dataclasses import asdict
-import json
+def save_mc(mc_inst: MediaContainer,
+            filename: Union[str, os.PathLike],
+            overwrite: Optional[bool] = True) -> None:
+    """
+    Save the MediaContainer into a JSON file.
 
-md = Media()
-md.glob_media()
-md.input_files()
-mc = MediaContainer(md.input_dir(), md.probe_all())
+    Parameters
+    ----------
+    mc_inst : MediaContainer
+        MediaContainer storage for original and compressed material, metrics.
+    filename : Union[str, os.PathLike]
+        Output filename for the JSON file.
+    overwrite : Optional[bool], optional
+        Toggles overwriting an existing JSON file. The default is True.
 
-#json_foo = json.dumps(asdict(mc))
-#print(type(json_foo))
-#print(json_foo)
+    Raises
+    ------
+    FileExistsError
+        Raises an exception if an attempt to overwrite an existing file is made
+        without being explicitly set as permitted via the overwrite flag.
+
+    Returns
+    -------
+    None
+
+    """
+    if overwrite is False and os.path.exists(filename):
+        raise FileExistsError
+
+    # mashumaro serialization
+    if isinstance(mc_inst, MediaContainer):
+        data: str = str(mc_inst.to_json())
+
+        with open(filename, "w") as jsonfile:
+            jsonfile.write(data)
+
+
+def load_mc(filename: Union[str, os.PathLike]) -> MediaContainer:
+    """
+    Load a previously saved JSON file into a MediaContainer instance.
+
+    Parameters
+    ----------
+    filename : Union[str, os.PathLike]
+        File containing the media container data.
+
+    Raises
+    ------
+    IOError
+        Exception raised if there is any I/O error with the given file.
+
+    Returns
+    -------
+    MediaContainer
+        An instance of MediaContainer class filled with the saved data.
+
+    """
+    if not os.path.exists(filename):
+        raise IOError
+
+    jsondata: str = ""
+    with open(filename, "r") as jsonfile:
+        jsondata = jsonfile.read()
+
+    media: MediaContainer = MediaContainer()
+    media.from_json(jsondata)
+    return media
+
+
+if __name__ == "__main__":
+
+    from media import Media
+
+    # some unit tests later
+    md = Media()
+    md.input_files()
+    md.glob_media()
+    mc = MediaContainer()
+    mc.inputdir = md.input_dir()
+    mc.inputdata = md.probe_all()
+    print(mc.to_json())

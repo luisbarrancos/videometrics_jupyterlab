@@ -250,3 +250,34 @@ class Encoder:
                         full_test_filenames[video_in].append(fname)
             return full_test_filenames
         return None
+
+    def fqn(self, basename):
+        full_test_filenames = []
+
+        for key, values in self.__options.encoding_sets().items():
+            encode_options = cp.deepcopy(
+                self.__options.encode_options())
+            # key = "crf", val = [18, 23, 31] for example
+            paramlist = []
+
+            for val in values:
+                encode_options[key] = val
+
+                fname_suffix = "__".join(
+                    map(
+                        lambda x, y: x + "_" + str(y),
+                        encode_options.keys(),
+                        encode_options.values(),
+                    )
+                )
+
+                fname, ext = basename.split(".")
+                fname = f"{fname}_-_{fname_suffix}.{ext}"
+                # for each video input, store the variation sets of the
+                # compressed test videos
+                #full_test_filenames.append(fname)
+                paramlist.append(fname)
+
+            full_test_filenames.append(paramlist)
+
+        return full_test_filenames

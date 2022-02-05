@@ -81,11 +81,18 @@ class MediaTests:
         # and for this, we can choose a case and check the metrics
 
         # op = options instance
-        # paramsets = {j:{} for j in op.encoding_sets().keys}
+        # paramsets = {j:{} for j in op.encoding_sets().keys()}
         # vcodec = {j:paramsets for j in op.codecs()["videocodecs"]}
         # ec = encoder instance
         # basename = {os.path.split(k)[1]:vcodec for \
-        #    k in ec.qualify_output_files()}
+        #    k in md.output_files()}
+        #
+        # mc.outputdata = {basename : {vcodec : {paramsets : fqn } } }
+        #
+        # fqn = within paramset, the FQN for the variation in the list
+        # when you build paramsets, it is the list in values
+        # so, you can build here a simpler version
+        # basename_paramset_setting
 
 
         self.__mc.outputdata = {

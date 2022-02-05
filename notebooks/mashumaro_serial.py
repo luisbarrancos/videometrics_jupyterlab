@@ -12,19 +12,18 @@ Created on Fri Feb  4 18:22:45 2022
 
 # https://github.com/Fatal1ty/mashumaro
 
-import json
+#import json
 
 #from marshmallow import Schema
 #from marshmallow_dataclass import dataclass
 #from dataclasses import field, asdict
 
-from dataclasses import asdict, dataclass, field
-from mashumaro import DataClassJSONMixin, field_options
-from mashumaro.config import BaseConfig
-
+import os
+from dataclasses import dataclass, field
 from os import PathLike
+from typing import Any, Dict, List, Optional, Type, Union
 
-from typing import Any, Dict, List, Union, Type, TextIO
+from mashumaro import DataClassJSONMixin
 
 # define a type hint for JSON files, but Pandas DataFrames must be
 # converted. This however is a general data structure, not the file itself
@@ -92,8 +91,7 @@ container =
         ...
     ]
 }
-"""
-"""
+
 @dataclass
 class VideoQuality:
     _metrics: Dict[str, DataFrame] = field(default_factory=dict)
@@ -111,6 +109,7 @@ class VideoQuality:
         del self._metrics
 """
 
+
 @dataclass
 class VideoQuality(DataClassJSONMixin):
     _metrics: Dict[str, Dict[str, Any]] = field(default_factory=dict)
@@ -120,7 +119,7 @@ class VideoQuality(DataClassJSONMixin):
         return self._metrics
 
     @metrics.setter
-    def metrics(self, data : Dict[str, Dict[str, Any]]) -> None:
+    def metrics(self, data: Dict[str, Dict[str, Any]]) -> None:
         self._metrics = data
 
     @metrics.deleter
@@ -147,6 +146,7 @@ class QualifiedOutput(DataClassJSONMixin):
     def entries(self) -> None:
         del self._fqn_output
 
+
 @dataclass
 class Parameters(DataClassJSONMixin):
     _param_set: Dict[str, QualifiedOutput] = field(default_factory=dict)
@@ -162,6 +162,7 @@ class Parameters(DataClassJSONMixin):
     @sets.deleter
     def sets(self) -> None:
         del self._param_set
+
 
 @dataclass
 class Codec(DataClassJSONMixin):
@@ -180,54 +181,41 @@ class Codec(DataClassJSONMixin):
     def video(self) -> None:
         del self._vcodec
 
+
 @dataclass
 class MediaInfo(DataClassJSONMixin):
     _mediainfo: Dict[Union[str, PathLike],
                      Dict[str, Any]] = field(default_factory=dict)
 
     @property
-    def info(self) -> Dict[Union[str, PathLike], Dict[str, Any]]:
+    def mediainfo(self) -> Dict[Union[str, PathLike], Dict[str, Any]]:
         return self._mediainfo
 
-    @info.setter
-    def info(self, input_info: Dict[Union[str, PathLike], Dict[str, Any]]) -> None:
+    @mediainfo.setter
+    def mediainfo(self, input_info: Dict[Union[str, PathLike], Dict[str, Any]]) -> None:
         self._mediainfo = input_info
 
-    @info.deleter
-    def info(self) -> None:
+    @mediainfo.deleter
+    def mediainfo(self) -> None:
         del self._mediainfo
+
 
 @dataclass
 class OutputBasename(DataClassJSONMixin):
-    _output: Dict[str, Codec] = field(default_factory=dict)
+    _output_basename: Dict[str, Codec] = field(default_factory=dict)
 
     @property
-    def output_file(self) -> Dict[str, Codec]:
-        return self._output
+    def output_basename(self) -> Dict[str, Codec]:
+        return self._output_basename
 
-    @output_file.setter
-    def output_file(self, out_name: str, cdc: Codec) -> None:
-        self._output[out_name] = cdc
+    @output_basename.setter
+    def output_basename(self, out_name: str, cdc: Codec) -> None:
+        self._output_basename[out_name] = cdc
 
-    @output_file.deleter
-    def output_file(self) -> None:
-        del self._output
+    @output_basename.deleter
+    def output_basename(self) -> None:
+        del self._output_basename
 
-@dataclass
-class InputMediaInfo(DataClassJSONMixin):
-    _input: MediaInfo = field(default_factory=MediaInfo)
-
-    @property
-    def input_file(self) -> MediaInfo:
-        return self._input
-
-    @input_file.setter
-    def input_file(self, minfo: MediaInfo) -> None:
-        self._input = minfo
-
-    @input_file.deleter
-    def input_file(self) -> None:
-        del self._input
 
 @dataclass
 class MediaContainer(DataClassJSONMixin):
@@ -236,7 +224,6 @@ class MediaContainer(DataClassJSONMixin):
     _inputdir: Union[str, PathLike] = field(default_factory=str)
     # probe all , for all globbed files under inputdir, this is a media info obj
     _inputdata: MediaInfo = field(default_factory=MediaInfo)
-
     # same for output directory
     _outputdir: Union[str, PathLike] = field(default_factory=str)
     # and the storage for the dictionaries, dataframes
@@ -291,40 +278,55 @@ class MediaContainer(DataClassJSONMixin):
         del self._outputdata
 
 
-
 # Serialization/deserialization to JSON via dataclasses asdict and
-# make_dataclasses, however we can also use orsjon and serde which have
-# some bells & whistles, besides being fast as well
-
-class Container:
-
-    def __init__(self):
-        pass
-
-    def to_json(self, container : MediaContainer) -> None:
-        pass
-
-    def from_json(self, json_file : Union[str, PathLike]) -> MediaContainer:
-        #with open(json_file, "r") as json_f:
-        #    data = json.load(json_f)
-        pass
-
-
-
-
-
-# jsonpickle: https://github.com/jsonpickle/jsonpickle?ref=pythonrepo.com
-# pyserde (serde) : https://github.com/yukinarit/pyserde
-# orjson : https://github.com/ijl/orjson?ref=pythonrepo.com
+# make_dataclasses, however mashumiro already extends the dataclass with
+# to_json, from_json methods.
+# The only interesting tidbit left is:
 # marshmallow : https://github.com/marshmallow-code/marshmallow
 
-from media import Media
+def save_mc(mc_inst: MediaContainer,
+            filename: Union[str, PathLike],
+            overwrite: Optional[bool] = True) -> None:
+    if overwrite is False and os.path.exists(filename):
+        raise FileExistsError
 
-md = Media()
-md.glob_media()
-md.input_files()
-mc = MediaContainer(md.input_dir(), md.probe_all())
+    # mashumaro serialization
+    if isinstance(mc_inst, MediaContainer):
+        data: str = str(mc_inst.to_json())
+
+        with open(filename, "w") as jsonfile:
+            jsonfile.write(data)
+
+
+def load_mc(filename: Union[str, PathLike]) -> MediaContainer:
+    if not os.path.exists(filename):
+        raise IOError
+
+    jsondata: str = ""
+    with open(filename, "r") as jsonfile:
+        jsondata = jsonfile.read()
+
+    media: MediaContainer = MediaContainer()
+    media.from_json(jsondata)
+    return media
+
+
+# TODO: Add unit tests
+
+#from media import Media
+
+#md = Media()
+# md.glob_media()
+# md.input_files()
+#mc = MediaContainer(md.input_dir(), md.probe_all())
 
 #json_foo = json.dumps(asdict(mc))
-#print(type(json_foo))
-#print(json_foo)
+# print(type(json_foo))
+# print(json_foo)
+
+#test = mc.to_json()
+
+
+# test
+# def build_container():
+#    vq = Video

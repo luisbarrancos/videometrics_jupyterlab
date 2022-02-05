@@ -344,6 +344,6 @@ if __name__ == "__main__":
     md.input_files()
     md.glob_media()
     mc = MediaContainer()
-    mc.inputdir = md.input_dir()
+    mc.inputdir = md.input_dir
     mc.inputdata = md.probe_all()
     print(mc.to_json())

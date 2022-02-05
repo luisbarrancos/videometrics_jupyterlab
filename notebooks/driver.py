@@ -22,13 +22,37 @@ md.glob_media() # glob all files into list, seen by md.input_files()
 
 class MediaTests:
 
-    def __init__(self):
+    def __init__(self, indir = None, outdir = None):
+
         self.__md = Media()
+        if indir is not None and os.path.isdir(indir):
+            self.__md.input_dir = indir
+        if outdir is not None and os.path.isdir(outdir):
+            self.__md.output_dir = outdir
+
         self.__options = Options()
         self.__encoder = Encoder()
         self.__vq = VideoQualityTests()
         self.__mc = MediaContainer()
 
-    def feed_media(self):
-        self.__md.
+    def feed_media(self, indir = None):
+        if indir is not None and os.path.isdir(indir):
+            self.__md.input_dir = indir
+
+        self.__md.glob_media()
+        # and store the input dir, and the nested input src : ffprobe data
+        # into the media container.
+        #infiles = self.__md.input_files()
+        #indata = self.__md.probe_all()
+        self.__mc.inputdir = self.__md.input_dir
+        self.__mc.inputdata = self.__md.probe_all()
+
+    def prepare_output(self, outdir = None):
+        if outdir is not None and os.path.isdir(outdir):
+            self.__md.output_dir = outdir
+
+        self.__mc.outputdir = self.__md.output_dir
+        self.__mc.outputdata = {k:{} for k in self.__md.output_files()}
+
+
 

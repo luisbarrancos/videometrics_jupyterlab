@@ -60,13 +60,13 @@ class Media:
             containers is not None else self.containers()
 
         self.__config["media_in"] = [
-            os.path.join(self.input_dir(), x)
-            for x in os.listdir(self.input_dir())
+            os.path.join(self.input_dir, x)
+            for x in os.listdir(self.input_dir)
             if x.split(".")[1] in _containers
         ]
         self.__config["media_out"] = [
-            os.path.join(self.output_dir(), x)
-            for x in os.listdir(self.input_dir())
+            os.path.join(self.output_dir, x)
+            for x in os.listdir(self.input_dir)
             if x.split(".")[1] in _containers
         ]
 

@@ -141,10 +141,11 @@ class MediaTests:
         return list(self.__options.encoding_sets().keys())
 
     def by_file(self, filename):
-        if filename is not None and isinstance(filename, str) \
-                and filename in self.basenames():
-            return self.__mc.outputdata[filename]
-        return None
+        if filename is None or not isinstance(filename, str) \
+            or not filename in self.basenames():
+                return self.__mc.outputdata
+
+        return {k:v for k, v in self.__mc.outputdata.items() if filename in k}
 
     # video codecs for now
     def by_codec(self, codec):
@@ -159,6 +160,22 @@ class MediaTests:
         if paramset is None or not isinstance(paramset, str) \
                 or not paramset in self.paramsets():
             return self.__mc.outputdata
+
+        # for k, v in self.__mc.outputdata.items():
+        #     for i, j in v.items():
+        #         if paramset in j.keys():
+        #             pass
+        return {
+            k : {i : j for i, j in v.items() if paramset in j.keys()} \
+                for k, v in self.__mc.outputdata.items()
+                }
+
+
+
+
+
+
+
 
     def filter_media(self, glob=None):
         # TODO: use enum, but check if marshmallow, mashumaru support them

@@ -117,9 +117,14 @@ class QualifiedOutput(DataClassJSONMixin):
         return self._fqn_output
 
     @entries.setter
-    def entries(self, outfile: Union[str, os.PathLike],
-                videoqual: VideoQuality) -> None:
-        self._fqn_output[outfile] = videoqual
+    def entries(self, data : \
+                Dict[Union[str, os.PathLike],VideoQuality]) -> None:
+        self._fqn_output = data
+
+    #@entries.setter
+    #def entries(self, outfile: Union[str, os.PathLike],
+    #            videoqual: VideoQuality) -> None:
+    #    self._fqn_output[outfile] = videoqual
 
     @entries.deleter
     def entries(self) -> None:
@@ -129,15 +134,19 @@ class QualifiedOutput(DataClassJSONMixin):
 @dataclass
 class Parameters(DataClassJSONMixin):
     """ Encoding parameter sets associated with each QO container."""
-    _param_set: Dict[str, QualifiedOutput] = field(default_factory=dict)
+    _param_set: Dict[str, List[QualifiedOutput]] = field(default_factory=dict)
 
     @property
-    def sets(self) -> Dict[str, QualifiedOutput]:
+    def sets(self) -> Dict[str, List[QualifiedOutput]]:
         return self._param_set
 
     @sets.setter
-    def sets(self, param: str, fqo: QualifiedOutput) -> None:
-        self._param_set[param] = fqo
+    def sets(self, paramset : Dict[str, List[QualifiedOutput]]) -> None:
+        self._param_set = paramset
+
+    #@sets.setter
+    #def sets(self, param: str, fqo: List[QualifiedOutput]) -> None:
+    #    self._param_set[param] = fqo
 
     @sets.deleter
     def sets(self) -> None:
@@ -155,8 +164,8 @@ class Codec(DataClassJSONMixin):
         return self._vcodec
 
     @video.setter
-    def video(self, vcodec: str, params: Parameters) -> None:
-        self._vcodec[vcodec] = params
+    def video(self, data : Dict[str, Parameters]) -> None:
+        self._vcodec = data
 
     @video.deleter
     def video(self) -> None:
@@ -186,15 +195,15 @@ class MediaInfo(DataClassJSONMixin):
 @dataclass
 class OutputBasename(DataClassJSONMixin):
     """ Output file basename for each input source media."""
-    _output_basename: Dict[str, Codec] = field(default_factory=dict)
+    _output_basename: Dict[str, List[Codec]] = field(default_factory=dict)
 
     @property
-    def output_basename(self) -> Dict[str, Codec]:
+    def output_basename(self) -> Dict[str, List[Codec]]:
         return self._output_basename
 
     @output_basename.setter
-    def output_basename(self, out_name: str, cdc: Codec) -> None:
-        self._output_basename[out_name] = cdc
+    def output_basename(self, data : Dict[str, List[Codec]]) -> None:
+        self._output_basename = data
 
     @output_basename.deleter
     def output_basename(self) -> None:
@@ -337,16 +346,39 @@ def load_mc(filename: Union[str, os.PathLike]) -> MediaContainer:
     media.from_json(jsondata)
     return media
 
-
+"""
 if __name__ == "__main__":
+vq = VideoQuality()
+vq.metrics = {"ssim" : {"dataframe" : "data"}}
 
-    from media import Media
+qo = QualifiedOutput()
+qo.entries = {"fqn_output.ext" : vq}
 
-    # some unit tests later
-    md = Media()
-    md.input_files()
-    md.glob_media()
-    mc = MediaContainer()
-    mc.inputdir = md.input_dir
-    mc.inputdata = md.probe_all()
-    print(mc.to_json())
+pa = Parameters()
+pa.sets = {"paramset_ie_cfr" : [qo]}
+
+co = Codec()
+co.video = {"codec_ie_libx264" : pa}
+
+from media import Media
+md = Media()
+md.glob_media()
+
+mi = MediaInfo()
+# mi.mediainfo = {"inputfile" : {"ffprobe" : "data"}}
+mi.mediainfo = md.probe_all()
+
+
+
+ob = OutputBasename()
+ob.output_basename = {"ob_ie_orbitals.mkv" : [co]}
+
+mc = MediaContainer()
+
+#from media import Media
+
+mc.inputdir = md.input_dir
+mc.inputdata = mi # already probed
+mc.outputdir = md.output_dir
+mc.outputdata = [ob]
+"""

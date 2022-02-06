@@ -178,10 +178,6 @@ class MediaTests:
 
 
 
-
-
-
-
     def filter_media(self, glob=None):
         # TODO: use enum, but check if marshmallow, mashumaru support them
         filtertypes = ["codec", "paramset", "metric"]

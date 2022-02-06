@@ -146,6 +146,28 @@ class MediaTests:
             data = json.load(jsonfile)
         return data
 
+    @staticmethod
+    def od_by_file(outputdata, fname):
+        if fname is None or not isinstance(fname, str) \
+            or not fname in outputdata.keys():
+                return outputdata
+        return {k:v for k, v in outputdata.items() if fname in k}
+
+    @staticmethod
+    def od_by_codec(outputdata, codec):
+        if codec is None or not isinstance(codec, str):
+            return outputdata
+        return {k:v for k, v in outputdata.items() if codec in v.keys()}
+
+    @staticmethod
+    def od_by_paramset(outputdata, paramset):
+        if paramset is None or not isinstance(paramset, str):
+            return outputdata
+        return {
+            k : {i : j for i, j in v.items() if paramset in j.keys()} \
+                for k, v in outputdata.items()
+                }
+
     def basenames(self):
         return list(self.__mc["outputdata"].keys())
 
@@ -160,7 +182,8 @@ class MediaTests:
             or not filename in self.basenames():
                 return self.__mc["outputdata"]
 
-        return {k:v for k, v in self.__mc["outputdata"].items() if filename in k}
+        return {k:v for k, v in \
+                self.__mc["outputdata"].items() if filename in k}
 
     # video codecs for now
     def by_codec(self, codec):

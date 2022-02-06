@@ -15,18 +15,14 @@ from ffmpeg_quality_metrics import FfmpegQualityMetrics as ffqm
 
 class VideoQualityTests:
     """ Video quality tests and auxiliary methods. """
-    def __init__(self, full_test_filenames: dict) -> None:
 
+    def __init__(self, full_test_filenames: dict) -> None:
         self.__metrics = ["ssim", "psnr", "vmaf", "vif"]
         # dict( original : out_basename_params_encoding)
         self.__full_test_filenames = full_test_filenames
 
     @staticmethod
-    def __moving_averages(
-        df: pd.DataFrame,
-        metric: str,
-        mean_period: int,
-    ) -> pd.DataFrame:
+    def __moving_averages(df, metric, mean_period):
 
         dfn = df.copy(deep=True)
         sma = f"_sma{mean_period}"
@@ -74,14 +70,14 @@ class VideoQualityTests:
         return dfn
 
     @staticmethod
-    def __get_dataframe(metric_data: dict, metric: str) -> pd.DataFrame:
+    def __get_dataframe(metric_data, metric):
         if metric in metric_data.keys():
             return pd.DataFrame.from_dict(metric_data[metric])
 
         print(f"No metric: {metric} found on metric data dict.")
         return None
 
-    def get_metrics(self) -> list:
+    def get_metrics(self):
         """
         Get the list of video quality metrics used for the tests.
 
@@ -93,7 +89,7 @@ class VideoQualityTests:
         """
         return self.__metrics
 
-    def set_metrics(self, metrics: list) -> None:
+    def set_metrics(self, metrics: list):
         """
         Set the list of metrics used for the tests.
 
@@ -107,13 +103,12 @@ class VideoQualityTests:
         None
 
         """
-
         if metrics is not None:
             self.__metrics = metrics if \
                 isinstance(metrics, list) else list(metrics)
 
     @staticmethod
-    def save_json(metrics_data: dict, json_filename: str) -> None:
+    def save_json(metrics_data, json_filename):
         """
         Save metrics test data as JSON file.
 
@@ -135,7 +130,7 @@ class VideoQualityTests:
             file.write(metrics_json)
 
     @staticmethod
-    def load_json(filename: str) -> dict:
+    def load_json(filename):
         """
         Load JSON metrics test results.
 
@@ -155,13 +150,9 @@ class VideoQualityTests:
         return None
 
     @staticmethod
-    def run_metrics(
-        video_in: str,
-        video_out: str,
-        metrics: list,
-        progress: bool = False,
-        vmaf_options: dict = None
-        ) -> dict:
+    def run_metrics(video_in,
+                    video_out,
+                    metrics, progress=False, vmaf_options=None):
         """
         Run the FFMPEG metrics on the original and distorted media.
 
@@ -195,12 +186,8 @@ class VideoQualityTests:
 
         return metrics_data
 
-    def run_tests(
-        self,
-        metrics: list,
-        progress: bool = False,
-        vmaf_options: dict = None
-        ) -> None:
+    def run_tests(self,
+                  metrics, progress=False, vmaf_options=None):
         """
         Run the metric tests for the entire media in the lists.
 
@@ -219,7 +206,6 @@ class VideoQualityTests:
         None
 
         """
-
         for original, compressed_files in self.__full_test_filenames.items():
             for compressed_file in compressed_files:
                 metrics_data = self.run_metrics(
@@ -229,25 +215,21 @@ class VideoQualityTests:
                     progress=progress,
                     vmaf_options=vmaf_options,
                 )
-
                 data = {
                     "original_media": original,
                     "compressed_media": compressed_file,
                     "vq_metrics": metrics,
                     "metrics_data": metrics_data,
                 }
-
                 json_filename = compressed_file.split(".")[0] + ".json"
                 self.save_json(data, json_filename)
 
     # get the dataframes for the metrics of an individual file
-    def get_dataframes(
-        self,
-        metric_data: dict,
-        moving_averages: bool = False,
-        mean_period: int = 50,
-        metrics: list = None
-        ) -> dict:
+    def get_dataframes(self,
+                       metric_data,
+                       moving_averages=False,
+                       mean_period=50,
+                       metrics=None):
         """
         Get Pandas DataFrames for the metrics data.
 
@@ -270,7 +252,6 @@ class VideoQualityTests:
             DataFrames containing all the test data already cleaned.
 
         """
-
         dfs = {}
         vq_metrics = self.get_metrics() if metrics is not None else metrics
 

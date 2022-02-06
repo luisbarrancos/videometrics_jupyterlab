@@ -117,7 +117,8 @@ class QualifiedOutput(DataClassJSONMixin):
         return self._fqn_output
 
     @entries.setter
-    def entries(self, outfile: Union[str, os.PathLike], videoqual: VideoQuality) -> None:
+    def entries(self, outfile: Union[str, os.PathLike],
+                videoqual: VideoQuality) -> None:
         self._fqn_output[outfile] = videoqual
 
     @entries.deleter
@@ -173,7 +174,8 @@ class MediaInfo(DataClassJSONMixin):
         return self._mediainfo
 
     @mediainfo.setter
-    def mediainfo(self, input_info: Dict[Union[str, os.PathLike], Dict[str, Any]]) -> None:
+    def mediainfo(self, input_info:
+                  Dict[Union[str, os.PathLike], Dict[str, Any]]) -> None:
         self._mediainfo = input_info
 
     @mediainfo.deleter
@@ -205,7 +207,7 @@ class MediaContainer(DataClassJSONMixin):
     """Automated video encoding class through FFMPEG parameter sets."""
     # dir on which to glob files
     _inputdir: Union[str, os.PathLike] = field(default_factory=str)
-    # probe all , for all globbed files under inputdir, this is a media info obj
+    # probe all , for all globbed files under inputdir, this is media info obj
     _inputdata: MediaInfo = field(default_factory=MediaInfo)
     # same for output directory
     _outputdir: Union[str, os.PathLike] = field(default_factory=str)

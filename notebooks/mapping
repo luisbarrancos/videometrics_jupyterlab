@@ -1,0 +1,65 @@
+libx264
+crf (int)
+preset [fast, medium, slow, ...]
+
+            libx264     libx265     h266Enc     libvpx      libvpx-vp9  libsvtav1   libaom-av1
+crf             *           *                   *           *           *           *
+preset          *           *                                           **
+profile         **          **                                          **
+tune            **          **                  **          **                      **
+file            (1)         (1)     (1)         (2)         (2)         (1)                 
+pix_fmt         *           *                   *           *           *           *
+qp              *           *       *                                   *
+
+
+QP general [0,63]
+
+file
+(1) = mkv | mp4             (qtff | asf | avi | mxf)        (ogg on firefox)
+(2) = mkv | mp4 | webm      (     | asf | avi      )        (ogg on firefox)
+(3) = mkv                   ( mp4 | webm ) are on beta
+
+
+profile:
+libx264:    main 
+libx265:    main | main-intra | mainstillpicture | main444-8 | main444-intra | main10
+vvencapp:                                                                      main10
+libsvtav1   main | high (via -tier)
+
+
+tune:
+libx264     grain | animation | fastdecode | zerolatency | psnr | ssim | film | stillimage           
+libx265     grain | animation | fastdecode | zerolatency | psnr | ssim
+libvpx                                                     psnr | ssim
+libvpx-vp9                                                 psnr | ssim
+libaom-av1                                                 psnr | ssim
+
+preset:
+libx264     ultrafast | superfast | veryfast | faster | fast | medium | slow | slower | veryslow | placebo
+libx265     ultrafast | superfast | veryfast | faster | fast | medium | slow | slower | veryslow | placebo
+vvcenc                                         faster | fast | medium | slow | slower
+libavtav1   [0,8] default 8
+
+
+vvcenc (h266)
+https://github.com/fraunhoferhhi/vvenc/wiki/Usage
+--qp = -q = 32 = quantization param [0,63]
+--bitrate = -b = 0 (constant QP = 0 rate control off, otherwise *bits* per second)
+--input = -i = file
+--format = -c = yuv420 8bit or yuv420_10 10bit for the **INPUT** format
+--output = -o = file
+
+libvpx (vp8)
+http://underpop.online.fr/f/ffmpeg/help/libvpx.htm.gz
+https://trac.ffmpeg.org/wiki/Encode/VP8
+https://www.webmproject.org/docs/encoder-parameters/
+
+vvencapp 
+https://github.com/fraunhoferhhi/vvenc/wiki/Usage
+
+requires YUV420p, see
+https://ottverse.com/ffmpeg-convert-avi-mp4-to-yuv-raw-playback-yuv-ffplay/
+test file provided, but it increases in file size 100X (!!!)
+
+ffprobe colored_orbitals.mkv for data
+vvencapp -i colored_orbitals.yuv -s 1280x720 -r 25 -c yuv420p -o colored_orbitals.vvc

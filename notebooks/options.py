@@ -11,13 +11,20 @@ class Options:
     """A class for FFMPEG encoding options."""
 
     __verbosity = ["warning", "error", "panic"]
+    # For AV1, libaom-av1 requires -strict -2 (experimental codec)
+    # or use libsvtav1
+    # __vcodecs = [
+    #     "libx264", "libx265", "libvpx", "libvpx-vp9", "libaom-av1"]
     __vcodecs = [
-        "libx264", "libx265", "libvpx", "libvpx-vp9", "libaom-av1"]
+        "libx264", "libx265", "libvpx", "libvpx-vp9", "libsvtav1"]
     __acodecs = ["copy", "aac", "mp3", "vorbis"]
     __containers = ["mp4", "mkv", "webm"]
     __chroma_sampling = ["yuv420p", "yuv422p", "yuv444p"]
 
     def __init__(self):
+        # Regarding options, not all are supported accross codecs
+        # ideally we would restrict this or make a mapping where possible
+        #
         self.__common_options = {
             "c:v": "libx264",
             "f": "mp4",

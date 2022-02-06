@@ -132,7 +132,33 @@ class MediaTests:
         self.__mc = load_mc(filename)
 
     def basenames(self):
-        return [k for k in self.__mc.outputdata.keys()]
+        return list(self.__mc.outputdata.keys())
+
+    def codecs(self):
+        return self.__options.codecs()["videocodecs"]
+
+    def paramsets(self):
+        return list(self.__options.encoding_sets().keys())
+
+    def by_file(self, filename):
+        if filename is not None and isinstance(filename, str) \
+                and filename in self.basenames():
+            return self.__mc.outputdata[filename]
+        return None
+
+    # video codecs for now
+    def by_codec(self, codec):
+        if codec is None or not isinstance(codec, str) \
+                or not codec in self.codecs():
+            return self.__mc.outputdata
+
+        return {k: v for k, v in self.__mc.outputdata.items()
+                if codec in v.keys()}
+
+    def by_paramset(self, paramset):
+        if paramset is None or not isinstance(paramset, str) \
+                or not paramset in self.paramsets():
+            return self.__mc.outputdata
 
     def filter_media(self, glob=None):
         # TODO: use enum, but check if marshmallow, mashumaru support them
@@ -147,18 +173,3 @@ class MediaTests:
         # more advanced statistics can be gathered later on a assortment
         # of input media with different characteristics
         return None
-
-    def by_file(self, filename):
-        if filename is not None and isinstance(filename, str) \
-                and filename in self.basenames():
-            return self.__mc.outputdata[filename]
-        return None
-
-    # video codecs for now
-    def by_codec(self, codec):
-        if codec is None or not isinstance(codec, str) or not codec in \
-                self.__options.codecs()["vcodecs"]:
-            return self.__mc.outputdata
-
-        return {k: v for k, v in self.__mc.outputdata.items()
-                if codec in v.keys()}

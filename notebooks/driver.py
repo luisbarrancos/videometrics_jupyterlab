@@ -48,8 +48,6 @@ class MediaTests:
     def media_container(self, mc):
         if mc is not None and isinstance(mc, MediaContainer):
             self.__mc = mc
-        else:
-            print(f"Invalid media container: type {type(mc)}")
 
     def prepare_media(self, indir=None, outdir=None, options=None) -> None:
 
@@ -60,8 +58,6 @@ class MediaTests:
 
         if options is not None and isinstance(options, Options):
             self.__options = options
-        else:
-            print(f"Invalid type for options = {type(options)}")
 
         # gather all the input under inputdir
         self.__md.glob_media()

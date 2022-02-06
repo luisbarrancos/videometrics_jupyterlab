@@ -192,11 +192,11 @@ class MediaTests:
         if metric is None or not isinstance(metric, str):
             return outputdata
 
-        return {
-            k: {i: {m: n for m, n in j.items() if metric in n.values()}
-                for i, j in v.items()} for k, v
-            in outputdata.items()
-        }
+        return {k: {i: {m: {s: t
+                            for s, t in n.items() if metric in t.keys()}
+                        for m, n in j.items()}
+                    for i, j in v.items()}
+                for k, v in outputdata.items()}
 
     def basenames(self):
         return list(self.__mc["outputdata"].keys())
@@ -259,20 +259,16 @@ class MediaTests:
         if metric is None or not isinstance(metric, str):
             return self.__mc["outputdata"]
 
-        # for k, v in self.__mc.outputdata.items():
+        # for k, v in outputdata.items():
         #    for i, j in v.items():
-        #        # j.items are FQO and metric dict, with metric name and df
         #        for m, n in j.items():
-        #            # m = fqn output name, and n = {metric : df}
-        #            if metric in n.values() (or n)
-        # return {
-        #    k : {i : {m, n in j.items() if metric in n.values()} \
-        #         for i, j in v.items()} for k
-        return {
-            k: {i: {m: n for m, n in j.items() if metric in n.values()}
-                for i, j in v.items()} for k, v
-            in self.__mc["outputdata"].items()
-        }
+        #            for s, t in n.items():
+        #                print(f"t = {t.keys()}")   for i, j in v.items()} for k
+        return {k: {i: {m: {s: t
+                            for s, t in n.items() if metric in t.keys()}
+                        for m, n in j.items()}
+                    for i, j in v.items()}
+                for k, v in self.__mc["outputdata"].items()}
 
     # when filtering media we can proceed in sequence by
     # file, codec, paramset - and now there is a restricted smaller dict

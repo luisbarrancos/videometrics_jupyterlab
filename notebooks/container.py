@@ -199,6 +199,7 @@ class OutputBasename(DataClassJSONMixin):
         del self._output_basename
 
 
+# TODO: This should probably have the filter by pattern methods
 @dataclass
 class MediaContainer(DataClassJSONMixin):
     """Automated video encoding class through FFMPEG parameter sets."""

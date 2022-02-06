@@ -6,7 +6,7 @@ Created on Sat Feb  5 16:25:14 2022
 @author: cgwork
 """
 
-import os
+import json, os
 
 from container import (Codec, MediaContainer, MediaInfo, OutputBasename,
                        Parameters, QualifiedOutput, VideoQuality, load_mc,
@@ -38,7 +38,7 @@ class MediaTests:
         self.__encoder = Encoder(self.__md, self.__options)
         #self.__vq = VideoQualityTests()
         # this is just the final container for the assembled data
-        self.__mc = MediaContainer()
+        self.__mc = {} #MediaContainer()
         self.__populated = False
 
     @property
@@ -63,12 +63,13 @@ class MediaTests:
         # gather all the input under inputdir
         self.__md.glob_media()
         # store the ffprobe data structure
-        self.__mc.inputdir = self.__md.input_dir
-        self.__md.inputdata = self.__md.probe_all()
+        self.__mc["inputdir"] = self.__md.input_dir
+        self.__mc["inputdata"] = self.__md.probe_all()
+        self.__mc["outputdir"] = self.__md.output_dir
         self.__populate_outputs()
         # some sanitization to catch issues earlier, though empty output
         # data would be pretty obvious
-        self.__populated = len(self.__mc.outputdata) > 0
+        self.__populated = len(self.__mc["outputdata"].values()) > 0
 
     def __populate_outputs(self) -> None:
         # foreach basename, the iterated codecs
@@ -114,7 +115,7 @@ class MediaTests:
         #    fname_suffix = "__".join(map(lambda x, y: x + "_" + str(y),
         # encode_options().keys(), op.encode_options().values()
         #
-        self.__mc.outputdata = {
+        self.__mc["outputdata"] = {
             os.path.split(outfile)[1]: {
                 vcodec: {
                     paramset: self.__encoder.build_fname(
@@ -126,13 +127,25 @@ class MediaTests:
         # which leads us to the FQN names
 
     def save(self, filename, overwrite=False):
-        save_mc(self.__mc, filename, overwrite)
+        #save_mc(self.__mc, filename, overwrite)
+        if overwrite is False and os.path.exists(filename):
+            raise FileExistsError
+
+        with open(filename, "w") as jsonfile:
+            json.dump(self.media_container, jsonfile, indent=4)
+            #json.write(self.media_container, jsonfile)
+
 
     def load(self, filename):
-        self.__mc = load_mc(filename)
+        #self.__mc = load_mc(filename)
+        if not os.path.exists(filename):
+            raise IOError
+
+        with open(filename, "r") as jsonfile:
+            self.media_container = json.load(jsonfile)
 
     def basenames(self):
-        return list(self.__mc.outputdata.keys())
+        return list(self.__mc["outputdata"].keys())
 
     def codecs(self):
         return self.__options.codecs()["videocodecs"]
@@ -143,23 +156,23 @@ class MediaTests:
     def by_file(self, filename):
         if filename is None or not isinstance(filename, str) \
             or not filename in self.basenames():
-                return self.__mc.outputdata
+                return self.__mc["outputdata"]
 
-        return {k:v for k, v in self.__mc.outputdata.items() if filename in k}
+        return {k:v for k, v in self.__mc["outputdata"].items() if filename in k}
 
     # video codecs for now
     def by_codec(self, codec):
         if codec is None or not isinstance(codec, str) \
                 or not codec in self.codecs():
-            return self.__mc.outputdata
+            return self.__mc["outputdata"]
 
-        return {k: v for k, v in self.__mc.outputdata.items()
+        return {k: v for k, v in self.__mc["outputdata"].items()
                 if codec in v.keys()}
 
     def by_paramset(self, paramset):
         if paramset is None or not isinstance(paramset, str) \
                 or not paramset in self.paramsets():
-            return self.__mc.outputdata
+            return self.__mc["outputdata"]
 
         # for k, v in self.__mc.outputdata.items():
         #     for i, j in v.items():
@@ -167,7 +180,7 @@ class MediaTests:
         #             pass
         return {
             k : {i : j for i, j in v.items() if paramset in j.keys()} \
-                for k, v in self.__mc.outputdata.items()
+                for k, v in self.__mc["outputdata"].items()
                 }
 
     # when filtering media we can proceed in sequence by
@@ -176,8 +189,6 @@ class MediaTests:
     # named via the FQN function, and each has the metrics dict with the VQA
     # metrics
 
-
-
     def filter_media(self, glob=None):
         # TODO: use enum, but check if marshmallow, mashumaru support them
         filtertypes = ["codec", "paramset", "metric"]
@@ -185,7 +196,7 @@ class MediaTests:
         if glob is None or not isinstance(glob, str) \
                 or self.__populated is False:
             # unsorted output data or empty data
-            return self.__mc.outputdata
+            return self.__mc["outputdata"]
 
         # media globbing should be groupped per input file, though
         # more advanced statistics can be gathered later on a assortment

@@ -39,6 +39,7 @@ class MediaTests:
         #self.__vq = VideoQualityTests()
         # this is just the final container for the assembled data
         self.__mc = MediaContainer()
+        self.__populated = False
 
     @property
     def media_container(self):
@@ -65,6 +66,9 @@ class MediaTests:
         self.__mc.inputdir = self.__md.input_dir
         self.__md.inputdata = self.__md.probe_all()
         self.__populate_outputs()
+        # some sanitization to catch issues earlier, though empty output
+        # data would be pretty obvious
+        self.__populated = len(self.__mc.outputdata) > 0
 
     def __populate_outputs(self) -> None:
         # foreach basename, the iterated codecs
@@ -120,3 +124,41 @@ class MediaTests:
                 } for vcodec in self.__options.codecs()["videocodecs"]
             } for outfile in self.__md.output_files()}
         # which leads us to the FQN names
+
+    def save(self, filename, overwrite=False):
+        save_mc(self.__mc, filename, overwrite)
+
+    def load(self, filename):
+        self.__mc = load_mc(filename)
+
+    def basenames(self):
+        return [k for k in self.__mc.outputdata.keys()]
+
+    def filter_media(self, glob=None):
+        # TODO: use enum, but check if marshmallow, mashumaru support them
+        filtertypes = ["codec", "paramset", "metric"]
+
+        if glob is None or not isinstance(glob, str) \
+                or self.__populated is False:
+            # unsorted output data or empty data
+            return self.__mc.outputdata
+
+        # media globbing should be groupped per input file, though
+        # more advanced statistics can be gathered later on a assortment
+        # of input media with different characteristics
+        return None
+
+    def by_file(self, filename):
+        if filename is not None and isinstance(filename, str) \
+                and filename in self.basenames():
+            return self.__mc.outputdata[filename]
+        return None
+
+    # video codecs for now
+    def by_codec(self, codec):
+        if codec is None or not isinstance(codec, str) or not codec in \
+                self.__options.codecs()["vcodecs"]:
+            return self.__mc.outputdata
+
+        return {k: v for k, v in self.__mc.outputdata.items()
+                if codec in v.keys()}

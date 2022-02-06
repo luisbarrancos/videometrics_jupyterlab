@@ -191,12 +191,12 @@ class MediaTests:
     def od_by_metric(outputdata, metric):
         if metric is None or not isinstance(metric, str):
             return outputdata
-        for i, j in v.items()} for k
-              return {
-                  k: {i: {m: n for m, n in j.items() if metric in n.values()}
-                      for i, j in v.items()} for k, v
-                  in outputdata.items()
-              }
+
+        return {
+            k: {i: {m: n for m, n in j.items() if metric in n.values()}
+                for i, j in v.items()} for k, v
+            in outputdata.items()
+        }
 
     def basenames(self):
         return list(self.__mc["outputdata"].keys())
@@ -284,7 +284,7 @@ class MediaTests:
         # TODO: use enum, but check if marshmallow, mashumaru support them
         filtertypes = ["codec", "paramset", "metric"]
 
-        #if glob is None or not isinstance(glob, str) \
+        # if glob is None or not isinstance(glob, str) \
         #        or self.__populated is False:
         #    # unsorted output data or empty data
         #    return self.__mc["outputdata"]

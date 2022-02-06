@@ -49,6 +49,13 @@ class MediaTests:
     def media_container(self, mc):
         if mc is not None and isinstance(mc, MediaContainer):
             self.__mc = mc
+    @property
+    def outputdata(self):
+        return self.__mc["outputdata"]
+
+    @outputdata.setter
+    def outputdata(self, outputdata):
+        self.__mc["outputdata"] = outputdata
 
     def prepare_media(self, indir=None, outdir=None, options=None) -> None:
 
@@ -135,7 +142,6 @@ class MediaTests:
             json.dump(self.media_container, jsonfile, indent=4)
             #json.write(self.media_container, jsonfile)
 
-
     def load(self, filename):
         #self.__mc = load_mc(filename)
         if not os.path.exists(filename):
@@ -146,6 +152,7 @@ class MediaTests:
             data = json.load(jsonfile)
         return data
 
+    # with "outputdata" property, we can chain successive filters
     @staticmethod
     def od_by_file(outputdata, fname):
         if fname is None or not isinstance(fname, str) \

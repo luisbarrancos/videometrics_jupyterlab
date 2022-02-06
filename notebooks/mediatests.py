@@ -187,6 +187,17 @@ class MediaTests:
             k: {i: j for i, j in v.items() if outputname in j.values()}
             for k, v in outputdata.items()}
 
+    @staticmethod
+    def od_by_metric(outputdata, metric):
+        if metric is None or not isinstance(metric, str):
+            return outputdata
+        for i, j in v.items()} for k
+              return {
+                  k: {i: {m: n for m, n in j.items() if metric in n.values()}
+                      for i, j in v.items()} for k, v
+                  in outputdata.items()
+              }
+
     def basenames(self):
         return list(self.__mc["outputdata"].keys())
 

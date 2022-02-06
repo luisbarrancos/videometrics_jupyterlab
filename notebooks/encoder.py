@@ -185,7 +185,6 @@ class Encoder:
 
         self.__full_test_filenames = cp.deepcopy(full_test_filenames)
 
-
     def encode_videos(self, debug=False):
         """
         Encode all the input list videos with the options set.
@@ -199,7 +198,6 @@ class Encoder:
             self.__media.input_files(), self.__media.output_files()
         ):
             self.encoding(video_in, video_out, debug=debug)
-
 
     def qualify_output_files(self):
         """
@@ -275,7 +273,7 @@ class Encoder:
                 fname = f"{fname}_-_{fname_suffix}.{ext}"
                 # for each video input, store the variation sets of the
                 # compressed test videos
-                #full_test_filenames.append(fname)
+                # full_test_filenames.append(fname)
                 paramlist.append(fname)
 
             full_test_filenames.append(paramlist)
@@ -292,7 +290,7 @@ class Encoder:
                     enc.keys(),
                     enc.values(),
                     )
-                )
+            )
             fname, ext = basename.split(".")
             fname = f"{fname}_-_{fname_suffix}.{ext}"
             paramlist.append(fname)
@@ -300,7 +298,6 @@ class Encoder:
 
     def build_fname_and_metric(self, key, values, basename):
         enc = cp.deepcopy(self.__options.encode_options())
-        #paramlist = []
         paramlist = {}
         for val in values:
             enc[key] = val
@@ -309,12 +306,8 @@ class Encoder:
                     enc.keys(),
                     enc.values(),
                     )
-                )
+            )
             fname, ext = basename.split(".")
             fname = f"{fname}_-_{fname_suffix}.{ext}"
-            # fname : {"metricname" : metricdata_dict}
-            # paramlist.append({fname : dict(dict())})
-            #paramlist[fname] = dict(dict())
-            paramlist[fname] = {"ssim" : {"frame" : 25, "data" : 2}}
+            paramlist[fname] = {"ssim": {"frame": 25, "data": 2}}
         return paramlist
-

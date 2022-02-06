@@ -62,8 +62,8 @@ class MediaTests:
     # add interface to options here
     # this encodes only one codec
     # add method to iterate over codecs
-    def encode_videos(self):
-        self.__encoder.encode_videos(debug=False)
+    def encode_videos(self, debug=True):
+        self.__encoder.encode_videos(debug=debug)
 
     def prepare_media(self, indir=None, outdir=None, options=None) -> None:
 

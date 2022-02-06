@@ -181,8 +181,7 @@ class Encoder:
                 if debug is True:
                     print(f"input {video_in}, output = {fname}")
                 else:
-                    #self.encode_video(video_in, fname, options)
-                    print(f"input = {video_in}, output = {fname}, options = {options}")
+                    self.encode_video(video_in, fname, options)
 
         self.__full_test_filenames = cp.deepcopy(full_test_filenames)
 

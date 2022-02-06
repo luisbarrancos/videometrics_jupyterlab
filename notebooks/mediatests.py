@@ -6,7 +6,8 @@ Created on Sat Feb  5 16:25:14 2022
 @author: cgwork
 """
 
-import json, os
+import json
+import os
 
 from container import (Codec, MediaContainer, MediaInfo, OutputBasename,
                        Parameters, QualifiedOutput, VideoQuality, load_mc,
@@ -38,7 +39,7 @@ class MediaTests:
         self.__encoder = Encoder(self.__md, self.__options)
         #self.__vq = VideoQualityTests()
         # this is just the final container for the assembled data
-        self.__mc = {} #MediaContainer()
+        self.__mc = {}  # MediaContainer()
         self.__populated = False
 
     @property
@@ -49,6 +50,7 @@ class MediaTests:
     def media_container(self, mc):
         if mc is not None and isinstance(mc, MediaContainer):
             self.__mc = mc
+
     @property
     def outputdata(self):
         return self.__mc["outputdata"]
@@ -156,24 +158,34 @@ class MediaTests:
     @staticmethod
     def od_by_file(outputdata, fname):
         if fname is None or not isinstance(fname, str) \
-            or not fname in outputdata.keys():
-                return outputdata
-        return {k:v for k, v in outputdata.items() if fname in k}
+                or not fname in outputdata.keys():
+            return outputdata
+        return {k: v for k, v in outputdata.items() if fname in k}
 
     @staticmethod
     def od_by_codec(outputdata, codec):
         if codec is None or not isinstance(codec, str):
             return outputdata
-        return {k:v for k, v in outputdata.items() if codec in v.keys()}
+        return {k: v for k, v in outputdata.items() if codec in v.keys()}
 
     @staticmethod
     def od_by_paramset(outputdata, paramset):
         if paramset is None or not isinstance(paramset, str):
             return outputdata
         return {
-            k : {i : j for i, j in v.items() if paramset in j.keys()} \
-                for k, v in outputdata.items()
-                }
+            k: {i: j for i, j in v.items() if paramset in j.keys()}
+            for k, v in outputdata.items()
+        }
+
+    @staticmethod
+    def od_by_fqn_output(outputdata, outputname):
+        if outputname is None or not isinstance(outputname, str):
+            return outputdata
+        # mc["outdata"]["light_orbitals.mkv"]["libx264"]["crf"][outputname] \
+        #    [metric]. Dump mt2 as JSON
+        return {
+            k: {i: j for i, j in v.items() if outputname in j.values()}
+            for k, v in outputdata.items()}
 
     def basenames(self):
         return list(self.__mc["outputdata"].keys())
@@ -186,10 +198,10 @@ class MediaTests:
 
     def by_file(self, filename):
         if filename is None or not isinstance(filename, str) \
-            or not filename in self.basenames():
-                return self.__mc["outputdata"]
+                or not filename in self.basenames():
+            return self.__mc["outputdata"]
 
-        return {k:v for k, v in \
+        return {k: v for k, v in
                 self.__mc["outputdata"].items() if filename in k}
 
     # video codecs for now
@@ -211,9 +223,45 @@ class MediaTests:
         #         if paramset in j.keys():
         #             pass
         return {
-            k : {i : j for i, j in v.items() if paramset in j.keys()} \
-                for k, v in self.__mc["outputdata"].items()
-                }
+            k: {i: j for i, j in v.items() if paramset in j.keys()}
+            for k, v in self.__mc["outputdata"].items()
+        }
+
+    def by_fqn_output(self, outputname):
+        if outputname is None or not isinstance(outputname, str):
+            return self.__mc["outputdata"]
+        # for k, v in self.__mc.outputdata.items():
+        #    for i, j im v.items():
+            # paramset in j.keys()
+            # paramset values in j.values() which are a dict
+            # that contains the fqn output name, and as value the
+            # metrics dict, with metrics name : actual dataframe
+            # to match fqn output, check if name in j.values()
+        # mc["outdata"]["light_orbitals.mkv"]["libx264"]["crf"][outputname] \
+        #    [metric]
+        return {
+            k: {i: j for i, j in v.items() if outputname in j.values()}
+            for k, v in self.__mc["outputdata"].items()
+        }
+
+    def by_metric(self, metric):
+        if metric is None or not isinstance(metric, str):
+            return self.__mc["outputdata"]
+
+        # for k, v in self.__mc.outputdata.items():
+        #    for i, j in v.items():
+        #        # j.items are FQO and metric dict, with metric name and df
+        #        for m, n in j.items():
+        #            # m = fqn output name, and n = {metric : df}
+        #            if metric in n.values() (or n)
+        # return {
+        #    k : {i : {m, n in j.items() if metric in n.values()} \
+        #         for i, j in v.items()} for k
+        return {
+            k: {i: {m: n for m, n in j.items() if metric in n.values()}
+                for i, j in v.items()} for k, v
+            in self.__mc["outputdata"].items()
+        }
 
     # when filtering media we can proceed in sequence by
     # file, codec, paramset - and now there is a restricted smaller dict
@@ -225,12 +273,16 @@ class MediaTests:
         # TODO: use enum, but check if marshmallow, mashumaru support them
         filtertypes = ["codec", "paramset", "metric"]
 
-        if glob is None or not isinstance(glob, str) \
-                or self.__populated is False:
-            # unsorted output data or empty data
-            return self.__mc["outputdata"]
+        #if glob is None or not isinstance(glob, str) \
+        #        or self.__populated is False:
+        #    # unsorted output data or empty data
+        #    return self.__mc["outputdata"]
 
         # media globbing should be groupped per input file, though
         # more advanced statistics can be gathered later on a assortment
         # of input media with different characteristics
         return None
+
+    # encoder compare iteratively files under simple outputbasename matching
+    # input basename, so that FFQM metrics are processed and added to tmp
+    # storage

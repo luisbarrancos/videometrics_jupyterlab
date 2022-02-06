@@ -314,6 +314,7 @@ class Encoder:
             fname = f"{fname}_-_{fname_suffix}.{ext}"
             # fname : {"metricname" : metricdata_dict}
             # paramlist.append({fname : dict(dict())})
-            paramlist[fname] = dict(dict())
+            #paramlist[fname] = dict(dict())
+            paramlist[fname] = {"ssim" : {"frame" : 25, "data" : 2}}
         return paramlist
 

@@ -32,50 +32,51 @@ class MediaTests:
             self.__md.input_dir = indir
         if outdir is not None and os.path.isdir(outdir):
             self.__md.output_dir = outdir
-
+        # an interface to change the options should be provided later
+        # the same for some encoder sets
         self.__options = Options()
         self.__encoder = Encoder(self.__md, self.__options)
         #self.__vq = VideoQualityTests()
+        # this is just the final container for the assembled data
         self.__mc = MediaContainer()
 
-    # start preparing the mc container, first with the src media and ff data
-    def feed_media(self, indir=None) -> None:
+    @property
+    def media_container(self):
+        return self.__mc
+
+    @media_container.setter
+    def media_container(self, mc):
+        if mc is not None and isinstance(mc, MediaContainer):
+            self.__mc = mc
+        else:
+            print(f"Invalid media container: type {type(mc)}")
+
+    def prepare_media(self, indir=None, outdir=None, options=None) -> None:
+
         if indir is not None and os.path.isdir(indir):
             self.__md.input_dir = indir
-
-        self.__md.glob_media()
-        # and store the input dir, and the nested input src : ffprobe data
-        # into the media container.
-        #infiles = self.__md.input_files()
-        #indata = self.__md.probe_all()
-        self.__mc.inputdir = self.__md.input_dir
-        self.__mc.inputdata = self.__md.probe_all()
-
-    # now the base outputnames and the base structure for the compressed files
-    def prepare_output(self, outdir=None) -> None:
         if outdir is not None and os.path.isdir(outdir):
             self.__md.output_dir = outdir
 
-        self.__mc.outputdir = self.__md.output_dir
-        # note, for dataframes, metrics, we might get by without the
-        # full path and basename.
-        # but since we already did it in encoder.qualify_output_files()
-        self.__encoder = Encoder(self.__md, self.__options)
+        if options is not None and isinstance(options, Options):
+            self.__options = options
+        else:
+            print(f"Invalid type for options = {type(options)}")
 
-        tmp = self.__encoder.qualify_output_files()
+        # gather all the input under inputdir
+        self.__md.glob_media()
+        # store the ffprobe data structure
+        self.__mc.inputdir = self.__md.input_dir
+        self.__md.inputdata = self.__md.probe_all()
+        self.__populate_outputs()
+
+    def __populate_outputs(self) -> None:
         # foreach basename, the iterated codecs
         # self.__mc.outputdata = {
         #    os.path.split(k)[1]: {
         #        vcodec: {} for vcodec in self.__options.codecs()["videocodecs"]
         #    } for k in tmp}
 
-        # foreach dict( str : list ) of encoder options
-        # you only need the parameter set, the keys, since the rest is FQN
-        # output name
-        # TODO: MOVE ALL of this into the classes, since dataclasses can
-        #       have regular methods.
-        # BIG TODO ^^^
-        #
         # For dataviz, we can at least do this:
         # Narrow easily by basename, by codec type, and by parameter variation
         # and for this, we can choose a case and check the metrics
@@ -113,16 +114,13 @@ class MediaTests:
         #    fname_suffix = "__".join(map(lambda x, y: x + "_" + str(y),
         # encode_options().keys(), op.encode_options().values()
         #
-
-
         self.__mc.outputdata = {
-            os.path.split(k)[1]: {
+            os.path.split(outfile)[1]: {
                 vcodec: {
-                    j: {} for j in self.__options.encoding_sets().keys()
+                    paramset: self.__encoder.build_fname(
+                        paramset, setvals, os.path.split(outfile)[1]) for
+                    paramset, setvals in
+                    self.__options.encoding_sets().items()
                 } for vcodec in self.__options.codecs()["videocodecs"]
-            } for k in tmp}
+            } for outfile in self.__md.output_files()}
         # which leads us to the FQN names
-
-
-    def mc_storage(self):
-        return self.__mc

@@ -1,0 +1,1198 @@
+{
+    "inputdir": "/home/cgwork/Downloads/Masters/Tecnologias_Comunicacao_Multimedia_TCM/Work/videos/original",
+    "inputdata": {
+        "/home/cgwork/Downloads/Masters/Tecnologias_Comunicacao_Multimedia_TCM/Work/videos/original/light_orbitals.mkv": {
+            "index": 0,
+            "codec_name": "hevc",
+            "codec_long_name": "H.265 / HEVC (High Efficiency Video Coding)",
+            "profile": "Rext",
+            "codec_type": "video",
+            "codec_tag_string": "[0][0][0][0]",
+            "codec_tag": "0x0000",
+            "width": 1280,
+            "height": 720,
+            "coded_width": 1280,
+            "coded_height": 736,
+            "closed_captions": 0,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv444p",
+            "level": 186,
+            "color_range": "pc",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "refs": 1,
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/1000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0
+            },
+            "tags": {
+                "DURATION": "00:00:10,240000000"
+            }
+        },
+        "/home/cgwork/Downloads/Masters/Tecnologias_Comunicacao_Multimedia_TCM/Work/videos/original/colored_orbitals.mkv": {
+            "index": 0,
+            "codec_name": "hevc",
+            "codec_long_name": "H.265 / HEVC (High Efficiency Video Coding)",
+            "profile": "Rext",
+            "codec_type": "video",
+            "codec_tag_string": "[0][0][0][0]",
+            "codec_tag": "0x0000",
+            "width": 1280,
+            "height": 720,
+            "coded_width": 1280,
+            "coded_height": 736,
+            "closed_captions": 0,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv444p",
+            "level": 186,
+            "color_range": "pc",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "refs": 1,
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/1000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0
+            },
+            "tags": {
+                "DURATION": "00:00:12,640000000"
+            }
+        },
+        "/home/cgwork/Downloads/Masters/Tecnologias_Comunicacao_Multimedia_TCM/Work/videos/original/flowlock.mkv": {
+            "index": 0,
+            "codec_name": "hevc",
+            "codec_long_name": "H.265 / HEVC (High Efficiency Video Coding)",
+            "profile": "Rext",
+            "codec_type": "video",
+            "codec_tag_string": "[0][0][0][0]",
+            "codec_tag": "0x0000",
+            "width": 1280,
+            "height": 720,
+            "coded_width": 1280,
+            "coded_height": 736,
+            "closed_captions": 0,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv444p",
+            "level": 186,
+            "color_range": "pc",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "refs": 1,
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/1000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0
+            },
+            "tags": {
+                "DURATION": "00:00:09,440000000"
+            }
+        },
+        "/home/cgwork/Downloads/Masters/Tecnologias_Comunicacao_Multimedia_TCM/Work/videos/original/flowfield.mkv": {
+            "index": 0,
+            "codec_name": "hevc",
+            "codec_long_name": "H.265 / HEVC (High Efficiency Video Coding)",
+            "profile": "Rext",
+            "codec_type": "video",
+            "codec_tag_string": "[0][0][0][0]",
+            "codec_tag": "0x0000",
+            "width": 1280,
+            "height": 720,
+            "coded_width": 1280,
+            "coded_height": 736,
+            "closed_captions": 0,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv444p",
+            "level": 186,
+            "color_range": "pc",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "refs": 1,
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/1000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0
+            },
+            "tags": {
+                "DURATION": "00:00:09,560000000"
+            }
+        },
+        "/home/cgwork/Downloads/Masters/Tecnologias_Comunicacao_Multimedia_TCM/Work/videos/original/noiseywaves.mkv": {
+            "index": 0,
+            "codec_name": "hevc",
+            "codec_long_name": "H.265 / HEVC (High Efficiency Video Coding)",
+            "profile": "Rext",
+            "codec_type": "video",
+            "codec_tag_string": "[0][0][0][0]",
+            "codec_tag": "0x0000",
+            "width": 1280,
+            "height": 720,
+            "coded_width": 1280,
+            "coded_height": 736,
+            "closed_captions": 0,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "16:9",
+            "pix_fmt": "yuv444p",
+            "level": 186,
+            "color_range": "pc",
+            "color_space": "bt709",
+            "color_transfer": "bt709",
+            "color_primaries": "bt709",
+            "refs": 1,
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/1000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0
+            },
+            "tags": {
+                "DURATION": "00:00:08,960000000"
+            }
+        }
+    },
+    "outputdir": "/home/cgwork/Downloads/Masters/Tecnologias_Comunicacao_Multimedia_TCM/Work/videos/compressed",
+    "outputdata": {
+        "light_orbitals.mkv": {
+            "libx264": {
+                "crf": {
+                    "light_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libx265": {
+                "crf": {
+                    "light_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx": {
+                "crf": {
+                    "light_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx-vp9": {
+                "crf": {
+                    "light_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libaom-av1": {
+                "crf": {
+                    "light_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "light_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            }
+        },
+        "colored_orbitals.mkv": {
+            "libx264": {
+                "crf": {
+                    "colored_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libx265": {
+                "crf": {
+                    "colored_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx": {
+                "crf": {
+                    "colored_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx-vp9": {
+                "crf": {
+                    "colored_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libaom-av1": {
+                "crf": {
+                    "colored_orbitals_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "colored_orbitals_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            }
+        },
+        "flowlock.mkv": {
+            "libx264": {
+                "crf": {
+                    "flowlock_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libx265": {
+                "crf": {
+                    "flowlock_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx": {
+                "crf": {
+                    "flowlock_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx-vp9": {
+                "crf": {
+                    "flowlock_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libaom-av1": {
+                "crf": {
+                    "flowlock_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowlock_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            }
+        },
+        "flowfield.mkv": {
+            "libx264": {
+                "crf": {
+                    "flowfield_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libx265": {
+                "crf": {
+                    "flowfield_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx": {
+                "crf": {
+                    "flowfield_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx-vp9": {
+                "crf": {
+                    "flowfield_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libaom-av1": {
+                "crf": {
+                    "flowfield_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "flowfield_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            }
+        },
+        "noiseywaves.mkv": {
+            "libx264": {
+                "crf": {
+                    "noiseywaves_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libx265": {
+                "crf": {
+                    "noiseywaves_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx": {
+                "crf": {
+                    "noiseywaves_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libvpx-vp9": {
+                "crf": {
+                    "noiseywaves_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            },
+            "libaom-av1": {
+                "crf": {
+                    "noiseywaves_-_crf_18__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_27__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_36__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "preset": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_medium__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_slower__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "tune": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_animation__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_grain__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "motion-est": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_umh__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "aq-mode": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_0__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_2__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_3__weightp_-1__pix_fmt_yuv420p.mkv": {}
+                },
+                "weightp": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_0__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_2__pix_fmt_yuv420p.mkv": {}
+                },
+                "pix_fmt": {
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv420p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv422p.mkv": {},
+                    "noiseywaves_-_crf_23__preset_veryfast__tune_film__motion-est_esa__aq-mode_-1__weightp_-1__pix_fmt_yuv444p.mkv": {}
+                }
+            }
+        }
+    }
+}

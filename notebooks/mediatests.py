@@ -118,7 +118,7 @@ class MediaTests:
         self.__mc["outputdata"] = {
             os.path.split(outfile)[1]: {
                 vcodec: {
-                    paramset: self.__encoder.build_fname(
+                    paramset: self.__encoder.build_fname_and_metric(
                         paramset, setvals, os.path.split(outfile)[1]) for
                     paramset, setvals in
                     self.__options.encoding_sets().items()
@@ -141,8 +141,10 @@ class MediaTests:
         if not os.path.exists(filename):
             raise IOError
 
+        data = {}
         with open(filename, "r") as jsonfile:
-            self.media_container = json.load(jsonfile)
+            data = json.load(jsonfile)
+        return data
 
     def basenames(self):
         return list(self.__mc["outputdata"].keys())

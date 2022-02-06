@@ -300,7 +300,8 @@ class Encoder:
 
     def build_fname_and_metric(self, key, values, basename):
         enc = cp.deepcopy(self.__options.encode_options())
-        paramlist = []
+        #paramlist = []
+        paramlist = {}
         for val in values:
             enc[key] = val
             fname_suffix = "__".join(
@@ -312,5 +313,6 @@ class Encoder:
             fname, ext = basename.split(".")
             fname = f"{fname}_-_{fname_suffix}.{ext}"
             # fname : {"metricname" : metricdata_dict}
-            paramlist.append({fname : {{}}})
+            # paramlist.append({fname : dict(dict())})
+            paramlist[fname] = dict(dict())
         return paramlist

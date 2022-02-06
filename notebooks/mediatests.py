@@ -59,6 +59,12 @@ class MediaTests:
     def outputdata(self, outputdata):
         self.__mc["outputdata"] = outputdata
 
+    # add interface to options here
+    # this encodes only one codec
+    # add method to iterate over codecs
+    def encode_videos(self):
+        self.__encoder.encode_videos(debug=False)
+
     def prepare_media(self, indir=None, outdir=None, options=None) -> None:
 
         if indir is not None and os.path.isdir(indir):

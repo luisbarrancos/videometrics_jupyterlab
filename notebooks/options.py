@@ -265,7 +265,7 @@ class Options:
             for key, val in options:
                 self.__encode_options[key] = val
 
-    def insert_encoding_sets(self, encoding_sets):
+    def insert_encoding_sets(self, encoding_sets, replace = False):
         """
         Insert encoding sets as dictionary of lists.
 
@@ -284,6 +284,9 @@ class Options:
         None.
 
         """
+        if replace is True:
+            self.__encoding_sets.clear()
+
         if encoding_sets is not None and isinstance(encoding_sets, dict):
             for key, val in encoding_sets.items():
                 self.__encoding_sets[key] = val \

@@ -65,6 +65,7 @@ class MediaTests:
     def encode_videos(self, debug=True):
         self.__encoder.encode_videos(debug=debug)
 
+    @property
     def options(self):
         return self.__options
 

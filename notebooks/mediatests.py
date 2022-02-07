@@ -231,8 +231,7 @@ class MediaTests:
             return self.__mc["outputdata"]
 
         return {m: {s: t for s, t in n.items() if codec == s}
-                        for m, n in self.__mc["outputdata"].items()}
-
+                for m, n in self.__mc["outputdata"].items()}
 
     def by_paramset(self, paramset):
         if paramset is None or not isinstance(paramset, str) \
@@ -240,9 +239,9 @@ class MediaTests:
             return self.__mc["outputdata"]
 
         return {i: {m: {s: t
-                            for s, t in n.items() if paramset == s}
-                        for m, n in j.items()}
-                    for i, j in self.__mc["outputdata"].items()}
+                        for s, t in n.items() if paramset == s}
+                    for m, n in j.items()}
+                for i, j in self.__mc["outputdata"].items()}
 
     def by_fqn_output(self, outputname):
         if outputname is None or not isinstance(outputname, str):
@@ -257,9 +256,9 @@ class MediaTests:
         # mc["outdata"]["light_orbitals.mkv"]["libx264"]["crf"][outputname] \
         #    [metric]
         return {i: {m: {s: list(filter(lambda x: x == outputname, t))
-                            for s, t in n.items()}
-                        for m, n in j.items()}
-                    for i, j in self.__mc["outputdata"].items()}
+                        for s, t in n.items()}
+                    for m, n in j.items()}
+                for i, j in self.__mc["outputdata"].items()}
 
     def by_metric(self, metric):
         if metric is None or not isinstance(metric, str):
@@ -289,7 +288,7 @@ class MediaTests:
     def videoqtests(self):
         del self.__videoqt
 
-    def populate_test_files(self, io_files_list = None):
+    def populate_test_files(self, io_files_list=None):
         # now we have a dict where the keys are the original media, and the values
         # are a list of the compressed files, so we can run the tests
         if io_files_list is not None:
@@ -300,14 +299,9 @@ class MediaTests:
         # add it to the vq instance
         self.__videoqt.io_files_list = self.__io_files_list
 
-
     def run_tests(self):
         pass
         #
         # lightorbitals.mkv : {codec : {preset : [output]}}
         # noiseywaves.mkv
         # noiseywaves_-_preset_veryfast__crf_36__motion-est_umh__pix_fmt_yuv444p.mkv
-
-
-
-

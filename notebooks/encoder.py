@@ -175,8 +175,7 @@ class Encoder:
             }
 
             if debug is True:
-                #print(f"input {video_in}, output = {fname}")
-                pass
+                print(f"input {video_in}, output = {fname}")
             else:
                 self.encode_video(video_in, fname, options)
 

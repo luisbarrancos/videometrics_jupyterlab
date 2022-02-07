@@ -203,6 +203,7 @@ class Encoder:
             # len values for v in dict values
             tmp = self.qualify_output_files()
             numfiles = sum([len(v) for v in tmp.values()])
+
             with alive_bar(numfiles) as bar:
                 for video_in, video_out in zip(
                     self.__media.input_files(), self.__media.output_files()

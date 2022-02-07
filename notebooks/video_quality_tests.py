@@ -12,26 +12,25 @@ import json
 import pandas as pd
 from ffmpeg_quality_metrics import FfmpegQualityMetrics as ffqm
 
-
 class VideoQualityTests:
     """ Video quality tests and auxiliary methods. """
 
-    def __init__(self, full_test_filenames=None):
+    def __init__(self, io_files_list=None):
         self.__metrics = ["ssim", "psnr", "vmaf", "vif"]
         # dict( original : out_basename_params_encoding)
-        self.__full_test_filenames = full_test_filenames
+        self.__io_files_list = io_files_list
 
     @property
     def io_files_list(self):
-        return self.__full_test_filenames
+        return self.__io_files_list
 
     @io_files_list.setter
     def io_files_list(self, fnames):
-        self.__full_test_filenames = fnames
+        self.__io_files_list = fnames
 
     @io_files_list.deleter
     def io_files_list(self):
-        del self.__full_test_filenames
+        del self.__io_files_list
 
     @staticmethod
     def __moving_averages(df, metric, mean_period):
@@ -218,7 +217,10 @@ class VideoQualityTests:
         None
 
         """
-        for original, compressed_files in self.__full_test_filenames.items():
+        if self.__io_files_list is None:
+            raise ValueError
+
+        for original, compressed_files in self.__io_files_list.items():
             for compressed_file in compressed_files:
                 metrics_data = self.run_metrics(
                     original,
@@ -303,7 +305,7 @@ class VideoQualityTests:
             for each original frame.
         """
         data = []
-        for original, compressed_files in self.__full_test_filenames.items():
+        for original, compressed_files in self.__io_files_list.items():
 
             io_media = {"original": original, "compressed_files": {}}
 

@@ -42,6 +42,7 @@ class MediaTests:
         # this is just the final container for the assembled data
         self.__mc = {}  # MediaContainer()
         self.__populated = False
+        self.__io_files_list = None
 
     @property
     def media_container(self):
@@ -280,30 +281,29 @@ class MediaTests:
                     for i, j in v.items()}
                 for k, v in self.__mc["outputdata"].items()}
 
-    # when filtering media we can proceed in sequence by
-    # file, codec, paramset - and now there is a restricted smaller dict
-    # paramset has now an array of files with the variations in the paramset
-    # named via the FQN function, and each has the metrics dict with the VQA
-    # metrics
+    @property
+    def videoqtests(self):
+        return self.__videoqt
 
-    #def filter_media(self, glob=None):
-    #    # TODO: use enum, but check if marshmallow, mashumaru support them
-    #    filtertypes = ["codec", "paramset", "metric"]
+    @videoqtests.setter
+    def videoqtests(self, videoqt):
+        if videoqt is not None and isinstance(videoqt, VideoQualityTests):
+            self.__videoqt = videoqt
 
-        # if glob is None or not isinstance(glob, str) \
-        #        or self.__populated is False:
-    #    #    # unsorted output data or empty data
-        #    return self.__mc["outputdata"]
+    @videoqtests.deleter
+    def videoqtests(self):
+        del self.__videoqt
 
-        # media globbing should be groupped per input file, though
-        # more advanced statistics can be gathered later on a assortment
-        # of input media with different characteristics
-    #    return None
-
-    # encoder compare iteratively files under simple outputbasename matching
-    # input basename, so that FFQM metrics are processed and added to tmp
-    # storage
+    def populate_test_files(self, io_files_list = None):
+        # now we have a dict where the keys are the original media, and the values
+        # are a list of the compressed files, so we can run the tests
+        if io_files_list is not None:
+            self.__io_files_list = io_files_list
+        else:
+            self.__io_files_list = self.__encoder.qualify_output_files()
 
 
-    # Add interface to VideoQualityTest() ?
+
+
+
 

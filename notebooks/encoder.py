@@ -153,38 +153,33 @@ class Encoder:
         """
         full_test_filenames = {video_in: []}
 
-        for key, values in self.__options.encoding_sets().items():
-            encode_options = cp.deepcopy(self.__options.encode_options())
-            # key = "crf", val = [18, 23, 31] for example
+        # build list of dicts with permutations set via itertools.product
+        # and pass the iterated dict to expand to ffmpeg
+        enc = self.__options.encoding_sets()
+        keys, values = zip(*enc.items())
+        info = [dict(zip(keys, v)) for v in product(*values)]
 
-            for val in values:
-                encode_options[key] = val
+        for i in info:
+            fname_suffix = "__".join(
+                map(lambda x, y: x + "_" + str(y),
+                    i.keys(), i.values()))
 
-                fname_suffix = "__".join(
-                    map(
-                        lambda x, y: x + "_" + str(y),
-                        encode_options.keys(),
-                        encode_options.values(),
-                    )
-                )
+            fname, ext = video_out.split(".")
+            fname = f"{fname}_-_{fname_suffix}.{ext}"
+            full_test_filenames[video_in].append(fname)
 
-                fname, ext = video_out.split(".")
-                fname = f"{fname}_-_{fname_suffix}.{ext}"
-                # for each video input, store the variation sets of the
-                # compressed test videos
-                full_test_filenames[video_in].append(fname)
-
-                options = {
-                    **self.__options.common_options(),
-                    **encode_options
+            options = {
+                **self.__options.common_options(),
+                **i
                 }
 
-                if debug is True:
-                    print(f"input {video_in}, output = {fname}")
-                else:
-                    self.encode_video(video_in, fname, options)
-
+            if debug is True:
+                print(f"input {video_in}, output = {fname}")
+            else:
+                print(f"input {video_in}, output = {fname}")
+                #self.encode_video(video_in, fname, options)
         self.__full_test_filenames = cp.deepcopy(full_test_filenames)
+
 
     def encode_videos(self, debug=False):
         """
@@ -215,15 +210,12 @@ class Encoder:
             output filenames.
 
         """
-
         if self.__media.input_files() is not None and \
                 self.__media.output_files() is not None:
 
             full_test_filenames = {}
-
             for video_in, video_out in zip(
                     self.__media.input_files(), self.__media.output_files()):
-
                 full_test_filenames[video_in] = self.fqn(video_out)
             return full_test_filenames
 

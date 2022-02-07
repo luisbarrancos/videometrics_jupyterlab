@@ -137,8 +137,7 @@ class MediaTests:
         self.__mc["outputdata"] = {
             os.path.split(outfile)[1]: {
                 vcodec: {
-                    paramset: self.__encoder.build_fname_and_metric(
-                        paramset, setvals, os.path.split(outfile)[1]) for
+                    paramset: self.__encoder.fqn(os.path.split(outfile)[1]) for
                     paramset, setvals in
                     self.__options.encoding_sets().items()
                 } for vcodec in self.__options.codecs()["videocodecs"]

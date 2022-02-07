@@ -45,11 +45,11 @@ class Options:
             "pix_fmt": "yuv420p",
         }
         self.__encoding_sets = {
-            "crf": [18, 23, 27, 36],
-            "preset": ["veryfast", "medium", "slower"],
-            "tune": ["film", "animation", "grain"],
+            "crf": [18, 27, 36],
+            "preset": ["veryfast", "medium"],
+            "tune": ["film", "grain"],
             "motion-est": ["esa", "umh"],
-            "aq-mode": [0, 1, 2, 3],
+            "aq-mode": [2, 3],
             "weightp": [0, 1, 2],
             "pix_fmt": self.__chroma_sampling,
         }

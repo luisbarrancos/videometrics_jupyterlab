@@ -9,6 +9,7 @@ Created on Mon Dec 27 06:44:38 2021
 import copy as cp
 
 import ffmpeg
+from itertools import product
 
 # import media as md
 # import options as op
@@ -297,17 +298,21 @@ class Encoder:
         return paramlist
 
     def build_fname_and_metric(self, key, values, basename):
-        enc = cp.deepcopy(self.__options.encode_options())
+
+        # build list of dicts with permutations set via itertools.product
+        enc = self.__options.encoding_sets()
+        keys, values = zip(*enc.items())
+        info = [dict(zip(keys, v)) for v in product(*values)]
+
         paramlist = {}
-        for val in values:
-            enc[key] = val
+
+        for i in info:
             fname_suffix = "__".join(
                 map(lambda x, y: x + "_" + str(y),
-                    enc.keys(),
-                    enc.values(),
-                    )
-            )
+                    i.keys(), i.values()))
+
             fname, ext = basename.split(".")
             fname = f"{fname}_-_{fname_suffix}.{ext}"
             paramlist[fname] = {"ssim": {"frame": 25, "data": 2}}
+
         return paramlist

@@ -7,6 +7,7 @@ Created on Mon Dec 27 06:44:38 2021
 """
 
 import copy as cp
+from alive_progress import alive_bar
 from itertools import product
 
 import ffmpeg
@@ -129,7 +130,7 @@ class Encoder:
                 **options,
             ).overwrite_output().run()
 
-    def encoding(self, video_in, video_out, debug=False):
+    def encoding(self, video_in, video_out, debug=False, bar=None):
         """
         Encode video with the option sets configuration.
 
@@ -174,13 +175,17 @@ class Encoder:
             }
 
             if debug is True:
-                print(f"input {video_in}, output = {fname}")
+                #print(f"input {video_in}, output = {fname}")
+                pass
             else:
                 self.encode_video(video_in, fname, options)
 
+            if bar is not None:
+                bar()
+
         self.__full_test_filenames = cp.deepcopy(full_test_filenames)
 
-    def encode_videos(self, debug=False):
+    def encode_videos(self, debug=False, progress=False):
         """
         Encode all the input list videos with the options set.
 
@@ -189,10 +194,21 @@ class Encoder:
         None.
 
         """
-        for video_in, video_out in zip(
-            self.__media.input_files(), self.__media.output_files()
-        ):
-            self.encoding(video_in, video_out, debug=debug)
+        if progress is False:
+            for video_in, video_out in zip(
+                self.__media.input_files(), self.__media.output_files()
+            ):
+                self.encoding(video_in, video_out, debug=debug)
+
+        else:
+            # len values for v in dict values
+            tmp = self.qualify_output_files()
+            numfiles = sum([len(v) for v in tmp.values()])
+            with alive_bar(numfiles) as bar:
+                for video_in, video_out in zip(
+                    self.__media.input_files(), self.__media.output_files()
+                ):
+                    self.encoding(video_in, video_out, debug=debug, bar=bar)
 
     def qualify_output_files(self):
         """
@@ -216,6 +232,7 @@ class Encoder:
             for video_in, video_out in zip(
                     self.__media.input_files(), self.__media.output_files()):
                 full_test_filenames[video_in] = self.fqn(video_out)
+
             return full_test_filenames
 
         return None

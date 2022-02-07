@@ -156,7 +156,7 @@ class VideoQualityTests:
             Test results with key metric, and value the results for each frame.
 
         """
-        with open(filename, "rt", encoding="utf8") as file:
+        with open(filename, "rt") as file:
             return json.load(file)
         return None
 

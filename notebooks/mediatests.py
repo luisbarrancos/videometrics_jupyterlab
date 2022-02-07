@@ -88,8 +88,6 @@ class MediaTests:
         self.__mc["inputdata"] = self.__md.probe_all()
         self.__mc["outputdir"] = self.__md.output_dir
         self.__populate_outputs()
-        # some sanitization to catch issues earlier, though empty output
-        # data would be pretty obvious
         self.__populated = len(self.__mc["outputdata"].values()) > 0
 
     def __populate_outputs(self) -> None:
@@ -301,6 +299,22 @@ class MediaTests:
             self.__io_files_list = io_files_list
         else:
             self.__io_files_list = self.__encoder.qualify_output_files()
+
+        # add it to the vq instance
+        self.__videoqt.io_files_list = self.__io_files_list
+
+
+    def run_tests(self):
+        #
+        # lightorbitals.mkv : {codec : {preset : [output]}}
+        # noiseywaves.mkv
+        # noiseywaves_-_preset_veryfast__crf_36__motion-est_umh__pix_fmt_yuv444p.mkv
+
+
+
+
+
+
 
 
 

@@ -236,8 +236,7 @@ class VideoQualityTests:
                     "metrics_data": metrics_data,
                 }
                 json_filename = compressed_file.split(".")[0] + ".json"
-                print(f"JSON file = {json_filename}")
-                #self.save_json(data, json_filename)
+                self.save_json(data, json_filename)
 
     # get the dataframes for the metrics of an individual file
     def get_dataframes(self,

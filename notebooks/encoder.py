@@ -7,9 +7,9 @@ Created on Mon Dec 27 06:44:38 2021
 """
 
 import copy as cp
+from itertools import product
 
 import ffmpeg
-from itertools import product
 
 # import media as md
 # import options as op
@@ -171,15 +171,14 @@ class Encoder:
             options = {
                 **self.__options.common_options(),
                 **i
-                }
+            }
 
             if debug is True:
                 print(f"input {video_in}, output = {fname}")
             else:
-                print(f"input {video_in}, output = {fname}")
-                #self.encode_video(video_in, fname, options)
-        self.__full_test_filenames = cp.deepcopy(full_test_filenames)
+                self.encode_video(video_in, fname, options)
 
+        self.__full_test_filenames = cp.deepcopy(full_test_filenames)
 
     def encode_videos(self, debug=False):
         """

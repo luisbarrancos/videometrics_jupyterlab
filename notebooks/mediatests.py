@@ -230,22 +230,19 @@ class MediaTests:
                 or not codec in self.codecs():
             return self.__mc["outputdata"]
 
-        return {k: v for k, v in self.__mc["outputdata"].items()
-                if codec in v.keys()}
+        return {m: {s: t for s, t in n.items() if codec == s}
+                        for m, n in self.__mc["outputdata"].items()}
+
 
     def by_paramset(self, paramset):
         if paramset is None or not isinstance(paramset, str) \
                 or not paramset in self.paramsets():
             return self.__mc["outputdata"]
 
-        # for k, v in self.__mc.outputdata.items():
-        #     for i, j in v.items():
-        #         if paramset in j.keys():
-        #             pass
-        return {
-            k: {i: j for i, j in v.items() if paramset in j.keys()}
-            for k, v in self.__mc["outputdata"].items()
-        }
+        return {i: {m: {s: t
+                            for s, t in n.items() if paramset == s}
+                        for m, n in j.items()}
+                    for i, j in self.__mc["outputdata"].items()}
 
     def by_fqn_output(self, outputname):
         if outputname is None or not isinstance(outputname, str):
@@ -259,10 +256,10 @@ class MediaTests:
             # to match fqn output, check if name in j.values()
         # mc["outdata"]["light_orbitals.mkv"]["libx264"]["crf"][outputname] \
         #    [metric]
-        return {
-            k: {i: j for i, j in v.items() if outputname in j.values()}
-            for k, v in self.__mc["outputdata"].items()
-        }
+        return {i: {m: {s: list(filter(lambda x: x == outputname, t))
+                            for s, t in n.items()}
+                        for m, n in j.items()}
+                    for i, j in self.__mc["outputdata"].items()}
 
     def by_metric(self, metric):
         if metric is None or not isinstance(metric, str):
@@ -305,18 +302,11 @@ class MediaTests:
 
 
     def run_tests(self):
+        pass
         #
         # lightorbitals.mkv : {codec : {preset : [output]}}
         # noiseywaves.mkv
         # noiseywaves_-_preset_veryfast__crf_36__motion-est_umh__pix_fmt_yuv444p.mkv
-
-
-
-
-
-
-
-
 
 
 

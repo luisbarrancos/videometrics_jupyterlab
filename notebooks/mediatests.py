@@ -37,6 +37,7 @@ class MediaTests:
         # the same for some encoder sets
         self.__options = Options()
         self.__encoder = Encoder(self.__md, self.__options)
+        self.__videoqt = VideoQualityTests()
         #self.__vq = VideoQualityTests()
         # this is just the final container for the assembled data
         self.__mc = {}  # MediaContainer()
@@ -302,3 +303,7 @@ class MediaTests:
     # encoder compare iteratively files under simple outputbasename matching
     # input basename, so that FFQM metrics are processed and added to tmp
     # storage
+
+
+    # Add interface to VideoQualityTest() ?
+

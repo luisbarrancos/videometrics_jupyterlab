@@ -16,10 +16,22 @@ from ffmpeg_quality_metrics import FfmpegQualityMetrics as ffqm
 class VideoQualityTests:
     """ Video quality tests and auxiliary methods. """
 
-    def __init__(self, full_test_filenames: dict) -> None:
+    def __init__(self, full_test_filenames=None):
         self.__metrics = ["ssim", "psnr", "vmaf", "vif"]
         # dict( original : out_basename_params_encoding)
         self.__full_test_filenames = full_test_filenames
+
+    @property
+    def io_files_list(self):
+        return self.__full_test_filenames
+
+    @io_files_list.setter
+    def io_files_list(self, fnames):
+        self.__full_test_filenames = fnames
+
+    @io_files_list.deleter
+    def io_files_list(self):
+        del self.__full_test_filenames
 
     @staticmethod
     def __moving_averages(df, metric, mean_period):
@@ -222,7 +234,8 @@ class VideoQualityTests:
                     "metrics_data": metrics_data,
                 }
                 json_filename = compressed_file.split(".")[0] + ".json"
-                self.save_json(data, json_filename)
+                print(f"JSON file = {json_filename}")
+                #self.save_json(data, json_filename)
 
     # get the dataframes for the metrics of an individual file
     def get_dataframes(self,

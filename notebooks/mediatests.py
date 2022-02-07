@@ -65,6 +65,9 @@ class MediaTests:
     def encode_videos(self, debug=True):
         self.__encoder.encode_videos(debug=debug)
 
+    def options(self):
+        return self.__options
+
     def prepare_media(self, indir=None, outdir=None, options=None) -> None:
 
         if indir is not None and os.path.isdir(indir):
@@ -282,19 +285,19 @@ class MediaTests:
     # named via the FQN function, and each has the metrics dict with the VQA
     # metrics
 
-    def filter_media(self, glob=None):
-        # TODO: use enum, but check if marshmallow, mashumaru support them
-        filtertypes = ["codec", "paramset", "metric"]
+    #def filter_media(self, glob=None):
+    #    # TODO: use enum, but check if marshmallow, mashumaru support them
+    #    filtertypes = ["codec", "paramset", "metric"]
 
         # if glob is None or not isinstance(glob, str) \
         #        or self.__populated is False:
-        #    # unsorted output data or empty data
+    #    #    # unsorted output data or empty data
         #    return self.__mc["outputdata"]
 
         # media globbing should be groupped per input file, though
         # more advanced statistics can be gathered later on a assortment
         # of input media with different characteristics
-        return None
+    #    return None
 
     # encoder compare iteratively files under simple outputbasename matching
     # input basename, so that FFQM metrics are processed and added to tmp

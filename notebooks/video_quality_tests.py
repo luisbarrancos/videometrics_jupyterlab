@@ -12,6 +12,7 @@ import json
 import pandas as pd
 from ffmpeg_quality_metrics import FfmpegQualityMetrics as ffqm
 
+
 class VideoQualityTests:
     """ Video quality tests and auxiliary methods. """
 

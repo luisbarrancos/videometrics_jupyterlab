@@ -174,8 +174,8 @@ class Options:
             List of codecs for the encoding sets processing.
 
         """
-        return {"videocodecs" : self.__vcodecs,
-                "audiocodecs" : self.__acodecs}
+        return {"videocodecs": self.__vcodecs,
+                "audiocodecs": self.__acodecs}
 
     def chroma_sampling(self, sampling):
         """
@@ -265,7 +265,7 @@ class Options:
             for key, val in options:
                 self.__encode_options[key] = val
 
-    def insert_encoding_sets(self, encoding_sets, replace = False):
+    def insert_encoding_sets(self, encoding_sets, replace=False):
         """
         Insert encoding sets as dictionary of lists.
 

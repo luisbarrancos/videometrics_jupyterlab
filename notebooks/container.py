@@ -117,12 +117,12 @@ class QualifiedOutput(DataClassJSONMixin):
         return self._fqn_output
 
     @entries.setter
-    def entries(self, data : \
-                Dict[Union[str, os.PathLike],VideoQuality]) -> None:
+    def entries(self, data:
+                Dict[Union[str, os.PathLike], VideoQuality]) -> None:
         self._fqn_output = data
 
-    #@entries.setter
-    #def entries(self, outfile: Union[str, os.PathLike],
+    # @entries.setter
+    # def entries(self, outfile: Union[str, os.PathLike],
     #            videoqual: VideoQuality) -> None:
     #    self._fqn_output[outfile] = videoqual
 
@@ -141,11 +141,11 @@ class Parameters(DataClassJSONMixin):
         return self._param_set
 
     @sets.setter
-    def sets(self, paramset : Dict[str, List[QualifiedOutput]]) -> None:
+    def sets(self, paramset: Dict[str, List[QualifiedOutput]]) -> None:
         self._param_set = paramset
 
-    #@sets.setter
-    #def sets(self, param: str, fqo: List[QualifiedOutput]) -> None:
+    # @sets.setter
+    # def sets(self, param: str, fqo: List[QualifiedOutput]) -> None:
     #    self._param_set[param] = fqo
 
     @sets.deleter
@@ -164,7 +164,7 @@ class Codec(DataClassJSONMixin):
         return self._vcodec
 
     @video.setter
-    def video(self, data : Dict[str, Parameters]) -> None:
+    def video(self, data: Dict[str, Parameters]) -> None:
         self._vcodec = data
 
     @video.deleter
@@ -202,7 +202,7 @@ class OutputBasename(DataClassJSONMixin):
         return self._output_basename
 
     @output_basename.setter
-    def output_basename(self, data : Dict[str, List[Codec]]) -> None:
+    def output_basename(self, data: Dict[str, List[Codec]]) -> None:
         self._output_basename = data
 
     @output_basename.deleter
@@ -345,40 +345,3 @@ def load_mc(filename: Union[str, os.PathLike]) -> MediaContainer:
     media: MediaContainer = MediaContainer()
     media.from_json(jsondata)
     return media
-
-"""
-if __name__ == "__main__":
-vq = VideoQuality()
-vq.metrics = {"ssim" : {"dataframe" : "data"}}
-
-qo = QualifiedOutput()
-qo.entries = {"fqn_output.ext" : vq}
-
-pa = Parameters()
-pa.sets = {"paramset_ie_cfr" : [qo]}
-
-co = Codec()
-co.video = {"codec_ie_libx264" : pa}
-
-from media import Media
-md = Media()
-md.glob_media()
-
-mi = MediaInfo()
-# mi.mediainfo = {"inputfile" : {"ffprobe" : "data"}}
-mi.mediainfo = md.probe_all()
-
-
-
-ob = OutputBasename()
-ob.output_basename = {"ob_ie_orbitals.mkv" : [co]}
-
-mc = MediaContainer()
-
-#from media import Media
-
-mc.inputdir = md.input_dir
-mc.inputdata = mi # already probed
-mc.outputdir = md.output_dir
-mc.outputdata = [ob]
-"""

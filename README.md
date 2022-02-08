@@ -19,6 +19,6 @@ You also need FFMPEG, preferably a modern version. These notebooks were done on 
 
 ## License
 
-GNU GPLv3 License.
+[GNU GPLv3 License](https://github.com/luisbarrancos/videometrics_jupyterlab/blob/master/LICENSE.md).
 
 

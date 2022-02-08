@@ -37,10 +37,12 @@ class MediaTests:
         # the same for some encoder sets
         self.__options = Options()
         self.__encoder = Encoder(self.__md, self.__options)
+        self.__videoqt = VideoQualityTests()
         #self.__vq = VideoQualityTests()
         # this is just the final container for the assembled data
         self.__mc = {}  # MediaContainer()
         self.__populated = False
+        self.__io_files_list = None
 
     @property
     def media_container(self):
@@ -86,54 +88,10 @@ class MediaTests:
         self.__mc["inputdata"] = self.__md.probe_all()
         self.__mc["outputdir"] = self.__md.output_dir
         self.__populate_outputs()
-        # some sanitization to catch issues earlier, though empty output
-        # data would be pretty obvious
         self.__populated = len(self.__mc["outputdata"].values()) > 0
 
     def __populate_outputs(self) -> None:
-        # foreach basename, the iterated codecs
-        # self.__mc.outputdata = {
-        #    os.path.split(k)[1]: {
-        #        vcodec: {} for vcodec in self.__options.codecs()["videocodecs"]
-        #    } for k in tmp}
-
-        # For dataviz, we can at least do this:
-        # Narrow easily by basename, by codec type, and by parameter variation
-        # and for this, we can choose a case and check the metrics
-
-        # op = options instance
-        # paramsets = {j:{} for j in op.encoding_sets().keys()}
-        # vcodec = {j:paramsets for j in op.codecs()["videocodecs"]}
-        # ec = encoder instance
-        # basename = {os.path.split(k)[1]:vcodec for \
-        #    k in md.output_files()}
-        #
-        # mc.outputdata = {basename : {vcodec : {paramsets : fqn } } }
-        #
-        # fqn = within paramset, the FQN for the variation in the list
-        # when you build paramsets, it is the list in values
-        # so, you can build here a simpler version
-        # basename_paramset_setting
-        #
-        # Encoder.fqn(basename) returns [paramset[fqn], ...]
-        # you must iterate over the paramsets
-        # so, instead of
-        # paramsets = {j:{} for j in op.encoding_sets().keys()}
-        #
-        # paramsets = {key:
-        #    [
-        #        build_fname(op.encode_options, key, values, basename)
-        #    ]
-        #    for key, values in op.encoding_sets().items()}
-        #
-        # and build_fname(encode_options, key, values, basename)
-        # returns an item of the list associated w param set key
-        #
-        # for val in values:
-        #    encode_options[key] = val
-        #    fname_suffix = "__".join(map(lambda x, y: x + "_" + str(y),
-        # encode_options().keys(), op.encode_options().values()
-        #
+        # populate the outputs with the fed ingested media variations
         self.__mc["outputdata"] = {
             os.path.split(outfile)[1]: {
                 vcodec: {
@@ -190,8 +148,7 @@ class MediaTests:
     def od_by_fqn_output(outputdata, outputname):
         if outputname is None or not isinstance(outputname, str):
             return outputdata
-        # mc["outdata"]["light_orbitals.mkv"]["libx264"]["crf"][outputname] \
-        #    [metric]. Dump mt2 as JSON
+
         return {
             k: {i: j for i, j in v.items() if outputname in j.values()}
             for k, v in outputdata.items()}
@@ -217,6 +174,7 @@ class MediaTests:
         return list(self.__options.encoding_sets().keys())
 
     def by_file(self, filename):
+        # filter by source/reference media filename
         if filename is None or not isinstance(filename, str) \
                 or not filename in self.basenames():
             return self.__mc["outputdata"]
@@ -224,81 +182,74 @@ class MediaTests:
         return {k: v for k, v in
                 self.__mc["outputdata"].items() if filename in k}
 
-    # video codecs for now
     def by_codec(self, codec):
+        # filter by coded, pay attention to codec param mapping
         if codec is None or not isinstance(codec, str) \
                 or not codec in self.codecs():
             return self.__mc["outputdata"]
 
-        return {k: v for k, v in self.__mc["outputdata"].items()
-                if codec in v.keys()}
+        return {m: {s: t for s, t in n.items() if codec == s}
+                for m, n in self.__mc["outputdata"].items()}
 
     def by_paramset(self, paramset):
+        # filter by the parameter sets to iterate on
         if paramset is None or not isinstance(paramset, str) \
                 or not paramset in self.paramsets():
             return self.__mc["outputdata"]
 
-        # for k, v in self.__mc.outputdata.items():
-        #     for i, j in v.items():
-        #         if paramset in j.keys():
-        #             pass
-        return {
-            k: {i: j for i, j in v.items() if paramset in j.keys()}
-            for k, v in self.__mc["outputdata"].items()
-        }
+        return {i: {m: {s: t
+                        for s, t in n.items() if paramset == s}
+                    for m, n in j.items()}
+                for i, j in self.__mc["outputdata"].items()}
 
     def by_fqn_output(self, outputname):
+        # filter by the fed media parameter variations
         if outputname is None or not isinstance(outputname, str):
             return self.__mc["outputdata"]
-        # for k, v in self.__mc.outputdata.items():
-        #    for i, j im v.items():
-            # paramset in j.keys()
-            # paramset values in j.values() which are a dict
-            # that contains the fqn output name, and as value the
-            # metrics dict, with metrics name : actual dataframe
-            # to match fqn output, check if name in j.values()
-        # mc["outdata"]["light_orbitals.mkv"]["libx264"]["crf"][outputname] \
-        #    [metric]
-        return {
-            k: {i: j for i, j in v.items() if outputname in j.values()}
-            for k, v in self.__mc["outputdata"].items()
-        }
+
+        return {i: {m: {s: list(filter(lambda x: x == outputname, t))
+                        for s, t in n.items()}
+                    for m, n in j.items()}
+                for i, j in self.__mc["outputdata"].items()}
 
     def by_metric(self, metric):
+        # filter by the video quality assessment metrics
         if metric is None or not isinstance(metric, str):
             return self.__mc["outputdata"]
 
-        # for k, v in outputdata.items():
-        #    for i, j in v.items():
-        #        for m, n in j.items():
-        #            for s, t in n.items():
-        #                print(f"t = {t.keys()}") for i, j in v.items()} for k
         return {k: {i: {m: {s: t
                             for s, t in n.items() if metric in t.keys()}
                         for m, n in j.items()}
                     for i, j in v.items()}
                 for k, v in self.__mc["outputdata"].items()}
 
-    # when filtering media we can proceed in sequence by
-    # file, codec, paramset - and now there is a restricted smaller dict
-    # paramset has now an array of files with the variations in the paramset
-    # named via the FQN function, and each has the metrics dict with the VQA
-    # metrics
+    @property
+    def videoqtests(self):
+        return self.__videoqt
 
-    #def filter_media(self, glob=None):
-    #    # TODO: use enum, but check if marshmallow, mashumaru support them
-    #    filtertypes = ["codec", "paramset", "metric"]
+    @videoqtests.setter
+    def videoqtests(self, videoqt):
+        if videoqt is not None and isinstance(videoqt, VideoQualityTests):
+            self.__videoqt = videoqt
 
-        # if glob is None or not isinstance(glob, str) \
-        #        or self.__populated is False:
-    #    #    # unsorted output data or empty data
-        #    return self.__mc["outputdata"]
+    @videoqtests.deleter
+    def videoqtests(self):
+        del self.__videoqt
 
-        # media globbing should be groupped per input file, though
-        # more advanced statistics can be gathered later on a assortment
-        # of input media with different characteristics
-    #    return None
+    def populate_test_files(self, io_files_list=None):
+        # now we have a dict where the keys are the original media, and the
+        # values are a list of the compressed files, so we can run the tests
+        if io_files_list is not None:
+            self.__io_files_list = io_files_list
+        else:
+            self.__io_files_list = self.__encoder.qualify_output_files()
 
-    # encoder compare iteratively files under simple outputbasename matching
-    # input basename, so that FFQM metrics are processed and added to tmp
-    # storage
+        # add it to the vq instance
+        self.__videoqt.io_files_list = self.__io_files_list
+
+    def run_tests(self):
+        pass
+        #
+        # lightorbitals.mkv : {codec : {preset : [output]}}
+        # noiseywaves.mkv
+        # noiseywaves_-_preset_veryfast__crf_36__motion-est_umh__pix_fmt_yuv444p.mkv

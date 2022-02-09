@@ -246,7 +246,7 @@ class Options:
         """
         return self.__rate_control
 
-    def insert_encoding_options(self, options):
+    def insert_encoding_options(self, options, replace=False):
         """
         Insert encoding options via dictionaries.
 
@@ -262,7 +262,10 @@ class Options:
 
         """
         if options is not None and isinstance(options, dict):
-            for key, val in options:
+            if replace is True:
+                self.__encode_options.clear()
+
+            for key, val in options.items():
                 self.__encode_options[key] = val
 
     def insert_encoding_sets(self, encoding_sets, replace=False):

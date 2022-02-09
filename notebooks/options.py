@@ -15,20 +15,19 @@ class Options:
     # or use libsvtav1
     # __vcodecs = [
     #     "libx264", "libx265", "libvpx", "libvpx-vp9", "libaom-av1"]
-    __vcodecs = [
-        "libx264", "libx265", "libvpx", "libvpx-vp9", "libsvtav1"]
+    __vcodecs = ["libx264", "libx265", "libvpx-vp9"]
     __acodecs = ["copy", "aac", "mp3", "vorbis"]
-    __containers = ["mp4", "mkv", "webm"]
-    __chroma_sampling = ["yuv420p", "yuv422p", "yuv444p"]
+    __containers = ["mkv"]
+    __chroma_sampling = ["yuv422p", "yuv444p"]
 
     def __init__(self):
         # Regarding options, not all are supported accross codecs
         # ideally we would restrict this or make a mapping where possible
         #
         self.__common_options = {
-            "c:v": "libx264",
+            #"c:v": "libx264",
             "f": "mp4",
-            "coder": "cabac",
+            #"coder": "cabac",
             # "trellis" : 2,
             # "b_strategy" : 2, # default 1=fast, 2=slower B-frame decision
             "color_range": "pc",
@@ -37,21 +36,23 @@ class Options:
         }
         self.__encode_options = {
             "crf": 23,
-            "preset": "veryfast",
-            "tune": "film",
-            "motion-est": "esa",
-            "aq-mode": -1,
-            "weightp": -1,
-            "pix_fmt": "yuv420p",
+            #"preset": "veryfast",
+            #"tune": "film",
+            #"motion-est": "esa",
+            #"aq-mode": -1,
+            #"weightp": -1,
+            #"pix_fmt": "yuv420p",
         }
         self.__encoding_sets = {
-            "crf": [18, 27, 36],
-            "preset": ["veryfast", "medium"],
-            "tune": ["film", "grain"],
-            "motion-est": ["esa", "umh"],
-            "aq-mode": [2, 3],
-            "weightp": [0, 1, 2],
+            "crf" : [17, 26],
+            #"crf": [18, 27, 36],
+            #"preset": ["veryfast", "medium"],
+            #"tune": ["film", "grain"],
+            #"motion-est": ["esa", "umh"],
+            #"aq-mode": [2, 3],
+            #"weightp": [0, 1, 2],
             "pix_fmt": self.__chroma_sampling,
+            "c:v" : self.__vcodecs
         }
         self.__rate_control = {
             # All rates in kbit/s
